@@ -1,4 +1,4 @@
-import { IReview } from "../shared/interface";
+import { IProduct, IReview } from "../shared/interface";
 import { Review } from "./review.schema";
 
 const createReviewToDb = async (review: IReview) => {
@@ -10,4 +10,13 @@ const getAllReviewFromDb = async () => {
   const data = await Review.find({});
   return data;
 };
-export const ReviewServices = { createReviewToDb, getAllReviewFromDb };
+
+const getProductReviewFromDb = async (productId: string) => {
+  const data = await Review.find({ productId });
+  return data;
+};
+export const ReviewServices = {
+  createReviewToDb,
+  getAllReviewFromDb,
+  getProductReviewFromDb,
+};
