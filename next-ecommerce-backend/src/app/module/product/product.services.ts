@@ -1,4 +1,4 @@
-import { IProduct } from "./product.interface";
+import { IProduct } from "../shared/interface";
 import { Product } from "./product.schema";
 
 const createProductToDb = async (product: IProduct) => {
