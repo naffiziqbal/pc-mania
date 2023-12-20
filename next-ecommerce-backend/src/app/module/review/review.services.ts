@@ -6,4 +6,8 @@ const createReviewToDb = async (review: IReview) => {
   return data;
 };
 
-export const ReviewServices = { createReviewToDb };
+const getAllReviewFromDb = async () => {
+  const data = await Review.find({});
+  return data;
+};
+export const ReviewServices = { createReviewToDb, getAllReviewFromDb };

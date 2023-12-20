@@ -15,5 +15,17 @@ const createReview: RequestHandler = async (req, res) => {
     return err;
   }
 };
+const getAllReview: RequestHandler = async (req, res) => {
+  try {
+    const data = await ReviewServices.getAllReviewFromDb();
+    res.status(200).json({
+      success: true,
+      message: "All Review",
+      data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-export const ReviewController = { createReview };
+export const ReviewController = { createReview, getAllReview };
