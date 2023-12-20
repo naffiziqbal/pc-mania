@@ -15,4 +15,13 @@ const createUser: RequestHandler = async (req, res) => {
   }
 };
 
-export const UserController = { createUser };
+const getAllUser: RequestHandler = async (req, res) => {
+  try {
+    const data = await UserServices.getUserFromDb();
+    res.status(200).json({ data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const UserController = { createUser, getAllUser };

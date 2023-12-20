@@ -12,4 +12,9 @@ const createUserToDb = async (user: IUser) => {
   throw new Error("Email is already in Use");
 };
 
-export const UserServices = { createUserToDb };
+const getUserFromDb = async () => {
+  const data = await User.find({});
+  return data;
+};
+
+export const UserServices = { createUserToDb, getUserFromDb };
