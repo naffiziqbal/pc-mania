@@ -6,3 +6,8 @@ export interface IProduct {
   stock: boolean;
 }
 
+export interface IReview {
+  productId: string;
+  reviewerId: string;
+  reviewerMessage: string;
+}
