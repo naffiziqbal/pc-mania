@@ -5,7 +5,7 @@ const createUserToDb = async (user: IUser) => {
   const existingUser = await User.find({ email: user?.email });
   console.log(existingUser, "Existing User");
 
-  if (!existingUser) {
+  if (!existingUser.length) {
     const data = await User.create(user);
     return data;
   }
