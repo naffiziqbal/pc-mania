@@ -1,5 +1,6 @@
 import { IUser } from "../shared/interface";
 import { User } from "./user.schema";
+const bcrypt = require("bcryptjs");
 
 const createUserToDb = async (user: IUser) => {
   const existingUser = await User.find({ email: user?.email });
@@ -17,4 +18,18 @@ const getUserFromDb = async () => {
   return data;
 };
 
-export const UserServices = { createUserToDb, getUserFromDb };
+const userLogin = async (user: IUser) => {
+  const { email, password } = user;
+  const data = await User.findOne({ email });
+  if (!data) {
+    throw new Error("No User Found");
+  }
+  try {
+    const passwordMatch = await bcrypt.compare(password, data.password);
+    return passwordMatch;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const UserServices = { createUserToDb, getUserFromDb, userLogin };

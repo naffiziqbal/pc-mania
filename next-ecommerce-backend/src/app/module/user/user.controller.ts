@@ -24,4 +24,9 @@ const getAllUser: RequestHandler = async (req, res) => {
   }
 };
 
-export const UserController = { createUser, getAllUser };
+const userLogin: RequestHandler = async (req, res) => {
+  const user = req.body;
+  const data = await UserServices.userLogin(user);
+  console.log(data, "login");
+};
+export const UserController = { createUser, getAllUser, userLogin };
