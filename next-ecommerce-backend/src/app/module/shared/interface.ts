@@ -1,5 +1,6 @@
 export interface IProduct {
   name: string;
+  description: string;
   category: string;
   image: string;
   price: number;
@@ -12,4 +13,10 @@ export interface IReview {
   reviewerMessage: string;
 }
 
-
+export interface IUser {
+  name: string;
+  email: string;
+  password: string;
+  image: string;
+  role: string;
+}
