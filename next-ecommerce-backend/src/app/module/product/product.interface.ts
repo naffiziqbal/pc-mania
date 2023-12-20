@@ -1,6 +1,6 @@
 export interface IProduct {
   name: string;
-  categorry: string;
+  category: string;
   image: string;
   price: number;
   stock: boolean;

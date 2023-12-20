@@ -6,7 +6,7 @@ const productSchema = new Schema<IProduct>({
     type: String,
     required: true,
   },
-  categorry: {
+  category: {
     type: String,
     required: true,
   },
@@ -24,4 +24,4 @@ const productSchema = new Schema<IProduct>({
   },
 });
 
-export const Product = model<IProduct>("User", productSchema);
+export const Product = model<IProduct>("Product", productSchema);
