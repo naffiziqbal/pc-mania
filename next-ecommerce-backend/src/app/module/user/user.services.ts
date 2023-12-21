@@ -26,14 +26,15 @@ const userLogin = async (user: IUser) => {
   }
   try {
     const passwordMatch = await bcrypt.compare(password, data.password);
-    return passwordMatch;
+    if (!passwordMatch) {
+      throw new Error("No User Found");
+    }
+    return data;
   } catch (err) {
     console.log(err);
   }
 };
 
 export const UserServices = { createUserToDb, getUserFromDb, userLogin };
-
-
 
 //  I Will Delete JWT

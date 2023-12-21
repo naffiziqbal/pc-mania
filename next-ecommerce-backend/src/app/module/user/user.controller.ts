@@ -27,6 +27,9 @@ const getAllUser: RequestHandler = async (req, res) => {
 const userLogin: RequestHandler = async (req, res) => {
   const user = req.body;
   const data = await UserServices.userLogin(user);
-  console.log(data, "login");
+  if (!data) {
+    throw new Error("User Not Found");
+  }
+  res.status(200).json({ success: true, message: "Logged In", data });
 };
 export const UserController = { createUser, getAllUser, userLogin };
