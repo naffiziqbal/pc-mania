@@ -5,12 +5,10 @@ const createUser: RequestHandler = async (req, res) => {
   const user = req.body;
   try {
     const data = await UserServices.createUserToDb(user);
-    console.log(data);
     res.status(200).json({
       success: true,
       message: "User Created Successfull",
-      data: data?.data,
-      token: data?.token,
+      data,
     });
   } catch (err) {
     console.log(err);
@@ -28,18 +26,7 @@ const getAllUser: RequestHandler = async (req, res) => {
 
 const userLogin: RequestHandler = async (req, res) => {
   const user = req.body;
-  const authHeaders = req?.headers?.authorization;
-
-  const token = authHeaders?.split(" ")[1];
-  console.log(token);
-  const data = await UserServices.userLogin(user, token);
-  if (data) {
-    res.status(200).json({
-      sucecess: true,
-      message: "User Logged In ",
-      data,
-    });
-  }
-  return res.status(403).json({ message: "User Not Available" });
+  const data = await UserServices.userLogin(user);
+  console.log(data, "login");
 };
 export const UserController = { createUser, getAllUser, userLogin };
