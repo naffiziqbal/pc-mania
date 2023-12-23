@@ -15,4 +15,18 @@ const createProduct: RequestHandler = async (req, res) => {
   }
 };
 
-export const ProductController = { createProduct };
+const getProducts: RequestHandler = async (req, res) => {
+  try {
+    const data = await ProductServices.getProductsFromDb();
+    if (!data) throw new Error("No Products Found");
+    else {
+      res.status(200).json({
+        success: true,
+        data,
+      });
+    }
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
+  }
+};
+export const ProductController = { createProduct, getProducts };
