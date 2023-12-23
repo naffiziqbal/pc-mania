@@ -11,8 +11,8 @@ const createReview: RequestHandler = async (req, res) => {
       message: "Review Submitted",
       data,
     });
-  } catch (err) {
-    return err;
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
   }
 };
 const getAllReview: RequestHandler = async (req, res) => {
@@ -23,8 +23,8 @@ const getAllReview: RequestHandler = async (req, res) => {
       message: "All Review",
       data,
     });
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -34,8 +34,8 @@ const getProductReview: RequestHandler = async (req, res) => {
   try {
     const data = await ReviewServices.getProductReviewFromDb(productId);
     res.status(200).json({ data });
-  } catch (error) {
-    console.log(error);
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
   }
 };
 

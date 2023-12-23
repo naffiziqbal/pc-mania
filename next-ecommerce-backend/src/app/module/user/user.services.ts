@@ -4,13 +4,13 @@ const bcrypt = require("bcryptjs");
 
 const createUserToDb = async (user: IUser) => {
   const existingUser = await User.find({ email: user?.email });
-  console.log(existingUser, "Existing User");
+  // console.log(existingUser, "Existing User");
 
   if (!existingUser.length) {
     const data = await User.create(user);
     return data;
   }
-  throw new Error("Email is already in Use");
+  return;
 };
 
 const getUserFromDb = async () => {
@@ -21,18 +21,16 @@ const getUserFromDb = async () => {
 const userLogin = async (user: IUser) => {
   const { email, password } = user;
   const data = await User.findOne({ email });
+  console.log(data);
   if (!data) {
-    throw new Error("No User Found");
-  }
-  try {
-    const passwordMatch = await bcrypt.compare(password, data.password);
-    if (!passwordMatch) {
-      throw new Error("No User Found");
-    }
     return data;
-  } catch (err) {
-    console.log(err);
   }
+
+  const passwordMatch = await bcrypt.compare(password, data?.password);
+  if (!passwordMatch) {
+    return "E";
+  }
+  return data;
 };
 
 export const UserServices = { createUserToDb, getUserFromDb, userLogin };

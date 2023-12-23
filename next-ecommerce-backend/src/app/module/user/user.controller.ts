@@ -10,8 +10,8 @@ const createUser: RequestHandler = async (req, res) => {
       message: "User Created Successfull",
       data,
     });
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -19,17 +19,21 @@ const getAllUser: RequestHandler = async (req, res) => {
   try {
     const data = await UserServices.getUserFromDb();
     res.status(200).json({ data });
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
   }
 };
 
 const userLogin: RequestHandler = async (req, res) => {
   const user = req.body;
-  const data = await UserServices.userLogin(user);
-  if (!data) {
-    throw new Error("User Not Found");
+  try {
+    const data = await UserServices.userLogin(user);
+    if (!data) {
+      res.status(403).json({ success: false, message: "Unable to Log In" });
+    }
+    res.status(200).json({ success: true, message: "Logged In", data });
+  } catch (err: any) {
+    res.status(500).json({ message: err.message });
   }
-  res.status(200).json({ success: true, message: "Logged In", data });
 };
 export const UserController = { createUser, getAllUser, userLogin };
