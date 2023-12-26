@@ -1,29 +1,34 @@
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules';
+import sliderImage from "./images/slider.png"
 
-import React from "react";
-import Swiper from "swiper";
-import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
-import { SwiperSlide } from "swiper/react";
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import Image from 'next/image';
 
 const Slider = () => {
+
   return (
     <Swiper
       // install Swiper modules
       modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={50}
-      slidesPerView={3}
+      slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
-      onSwiper={(swiper: any) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      ...
+      <SwiperSlide>
+        <Image src={sliderImage} alt="img" layout='responsive' />
+      </SwiperSlide>
+      <SwiperSlide>
+        <Image src={sliderImage} alt="img" layout='responsive' />
+      </SwiperSlide>
+      <SwiperSlide>
+        <Image src={sliderImage} alt="img" layout='responsive' />
+      </SwiperSlide>
     </Swiper>
   );
-};
+}
 
-export default Slider;
+export default Slider
