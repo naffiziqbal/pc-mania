@@ -1,20 +1,29 @@
 import Image from "next/image";
+import { format, render } from 'timeago.js'
 
 const NewProducts = ({ product }) => {
-    console.log(product)
-    const { name, image, price, stock, review } = product
+    const { name, image, price, stock, review, createdAt } = product
+
+    // Get 1 hour form Current Time
+    const timeAgoFromNow = Date.now() - 1 * 24 * 60 * 60 * 1000
+
+    // Formating time into Human Readable
+
+
+    const productCreationTimeStamp = new Date(createdAt).getTime()
+    console.log(productCreationTimeStamp)
+
+
+
     return (
         <div>
-            <h3>New Products</h3>
-
-            {/* Product card */}
-            <div className="bg-red-400">
+            {productCreationTimeStamp > timeAgoFromNow && <div>
                 <span>{stock}</span>
-                <Image className="bg-black" src={`/${image}`} alt="product-image" width={200} height={300} layout="fixed" />
+                <Image src={image} alt="product-image" width={200} height={300} layout="fixed" />
                 <span>{review}</span>
                 <p>{name}</p>
                 <p>{price}</p>
-            </div>
+            </div>}
         </div>
     );
 };

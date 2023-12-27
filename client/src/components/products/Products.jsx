@@ -1,10 +1,9 @@
 import NewProducts from "./NewProducts";
 
 const Products = ({ products }) => {
-    console.log(products)
     return (
         <>
-            {products?.map(product => <NewProducts key={product._id} product={product} />)}
+            {products?.map(product => <NewProducts key={product?._id} product={product} />)}
         </>
     );
 };
