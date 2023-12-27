@@ -55,8 +55,8 @@ const Header = () => {
               Pc Mania
             </Link>
           </section>
-          <section className="w-full">
-            <ul className="flex flex-row justify-between">
+          <section className="w-full  ">
+            <ul className="hidden md:flex flex-row justify-between ">
               <li>
                 <Link href={"/"}>Desktop</Link>
               </li>

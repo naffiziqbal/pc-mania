@@ -1,0 +1,13 @@
+.body {
+  animation-name: scroll;
+  animation-duration: 1s;
+}
+
+@keyframes scroll {
+  0% {
+    margin-left: -100rem;
+  }
+  100% {
+    margin-left: 0px;
+  }
+}
