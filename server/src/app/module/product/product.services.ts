@@ -14,9 +14,15 @@ const getSingleProductFromDb = async (id: any) => {
   const data = await Product.findById(id);
   return data;
 };
+const getProductAsCategoriesFromDb = async (category: object) => {
+  const data = await Product.find(category)
+  console.log(data, "data")
+  return data
+}
 
 export const ProductServices = {
   createProductToDb,
   getProductsFromDb,
   getSingleProductFromDb,
+  getProductAsCategoriesFromDb
 };

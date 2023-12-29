@@ -1,5 +1,6 @@
 import { RequestHandler } from "express";
 import { ProductServices } from "./product.services";
+import { UserServices } from "../user/user.services";
 
 const createProduct: RequestHandler = async (req, res) => {
   const product = req.body;
@@ -48,8 +49,18 @@ const getSigngleProduct: RequestHandler = async (req, res) => {
   }
 };
 
+const getProductAsCategories: RequestHandler = async (req, res) => {
+  const category = req.query
+  console.log(category, "category")
+  try {
+    const data = await ProductServices.getProductAsCategoriesFromDb(category)
+    res.send({ data })
+  } catch (err) { console.log(err) }
+}
+
 export const ProductController = {
   createProduct,
   getProducts,
   getSigngleProduct,
+  getProductAsCategories
 };
