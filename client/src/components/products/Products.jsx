@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Ad from "../ui/Slider/ad/Ad";
+import Ad from "../ui/ad/Ad";
 import NewProducts from "./NewProducts";
 import style from "@/styles/Product.module.css"
 

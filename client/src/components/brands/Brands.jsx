@@ -9,7 +9,7 @@ import brandImg from './brands/image 33.png'
 const Brands = () => {
     const imgSrc = [brandImg6, brandImg5, brandImg4, brandImg3, brandImg2, brandImg1, brandImg]
     return (
-        <div className="min-h-fit w-full flex gap-4 justify-between items-center my-12">
+        <div className="min-h-fit w-full flex flex-wrap gap-4 justify-between items-center my-12">
             {
                 imgSrc.map((data, idx) => <Image key={idx} src={data} width={100} height={100} alt='img' />)
             }

@@ -14,7 +14,7 @@ const SocialFeed = () => {
     return (
         <div>
             <h3 className="my-3 font-bold text-xl"> Follow us on Instagram for news and Offers and more</h3>
-            <div className="grid grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
                 {
                     posts?.slice(0, 6).map(post => <div key={post._id}>
                         <div className="border rounded p-3 min-h-fit min-w-fit hover:border-blue-400 hover:scale-105 duration-300">

@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { A11y, Autoplay, Pagination, Scrollbar } from 'swiper/modules';
+import Button from '../ui/Button/Button';
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
@@ -41,7 +42,7 @@ const Reviews = () => {
     }, [])
 
     return (
-        <div className=' mx-auto my-12 w-[70%] min-h-64 bg-[#F5F7FF] flex justify-center items-center rounded-lg'>
+        <div className=' mx-auto my-12 w-[70%] min-h-96 bg-[#F5F7FF] flex justify-center items-center rounded-lg'>
             <Swiper
                 modules={[Autoplay, Pagination, Scrollbar, A11y]}
                 loop={true}
@@ -58,13 +59,13 @@ const Reviews = () => {
                     reviews?.map((review, idx) =>
                         <div key={idx} className=''>
 
-                            <SwiperSlide className='min-h-52'>
-                                <div className='flex *:mx-2 '>
-                                    <FaQuoteLeft className='h-fit w-12' />
-                                    <div>
+                            <SwiperSlide className=' min-h-96'>
+                                <div className='flex min-h-52 *:mx-2 absolute top-1/2 -translate-y-1/2 left-0'>
+                                    <FaQuoteLeft className='h-fit w-12 relative' />
+                                    <div className='flex flex-col justify-between'>
                                         <p>{review?.reviewerMessage} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur repellendus perferendis distinctio aut ad modi aliquam quam cum quasi possimus facilis, delectus minus. Nostrum, at minima sunt omnis deleniti praesentium! </p>
                                         <p className='text-center'> - {review?.reviewerId}</p>
-                                        <button className='w-fit p-3 border-blue-400 text-blue-400 border-2 rounded-full font-semibold hover:bg-blue-400 hover:text-white duration-300 hover:border-white hover:border-2'>Leave us a Review</button>
+                                        <Button data={"Leave us a review"} />
                                     </div>
                                 </div>
                             </SwiperSlide>
