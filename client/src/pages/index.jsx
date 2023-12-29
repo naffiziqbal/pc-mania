@@ -3,6 +3,7 @@ import Products from "@/components/products/Products";
 import CategoryWiseProduct from "@/components/products/CategoryWiseProduct";
 import Brands from "@/components/brands/Brands";
 import SocialFeed from "@/components/socialFeed/SocialFeed";
+import Reviews from "@/components/Reviews/Reviews";
 
 const Home = ({ products }) => {
   console.log(products)
@@ -13,6 +14,7 @@ const Home = ({ products }) => {
     <Products products={products} />
     <Brands />
     <SocialFeed />
+    <Reviews />
 
   </div>;
 };
