@@ -10,7 +10,7 @@ const Home = ({ products }) => {
   return <div className="max_viewport">
     <Slider />
     <Products products={products} />
-    
+
   </div>;
 };
 

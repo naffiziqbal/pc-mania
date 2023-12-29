@@ -1,0 +1,9 @@
+.global_product > section > a {
+  text-decoration-line: underline;
+}
+
+.global_product > section > a:hover {
+  text-decoration-line: underline;
+  color: #2563eb;
+  transition: 0.3s ease;
+}

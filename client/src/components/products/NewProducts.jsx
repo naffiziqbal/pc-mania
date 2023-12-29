@@ -24,18 +24,16 @@ const NewProducts = ({ product }) => {
             {productCriationTimeStamp > timeAgoFromNow &&
 
                 <div
-                    className={`m-2 p-3 min-w-fit w-fit border hover:border-blue-400 duration-300 hover:scale-105 rounded-md 
+                    className={`m-2 p-2 min-w-fit w-fit border hover:border-blue-400 duration-300 hover:scale-105 rounded-md 
                         
                         `}>
-
-
                     <Link href={`/product/${_id}`}>
                         <div>
                             {stock ?
                                 <span className="mb-2 flex justify-end items-center *:mx-1 w-full">< IoCheckmarkCircleOutline style={{ color: "green" }} />In stock</span>
                                 : <CgUnavailable style={{ color: "red" }} />}
                         </div>
-                        <Image className="h-52 max-w-60 min-w-60 "
+                        <Image className="h-52 max-w-52 min-w-52 "
                             src={image}
                             alt="product-image"
                             width={200}
