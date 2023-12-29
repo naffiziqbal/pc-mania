@@ -16,3 +16,6 @@
   transition: 0.3s ease;
 }
 
+footer * ul > li:hover {
+  color: #2563eb;
+}
