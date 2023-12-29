@@ -4,6 +4,8 @@ import { format, render } from 'timeago.js'
 import { CgUnavailable } from "react-icons/cg";
 import Link from "next/link";
 
+import { SwiperSlide } from "swiper/react";
+
 
 const NewProducts = ({ product }) => {
     const { _id, name, image, price, stock, review, createdAt } = product
@@ -24,7 +26,7 @@ const NewProducts = ({ product }) => {
             {productCriationTimeStamp > timeAgoFromNow &&
 
                 <div
-                    className={`m-2 p-2 min-w-fit w-fit border hover:border-blue-400 duration-300 hover:scale-105 rounded-md 
+                    className={`m-2 p-2 min-w-fit w-full border hover:border-blue-400 duration-300 hover:scale-105 rounded-md 
                         
                         `}>
                     <Link href={`/product/${_id}`}>
@@ -33,11 +35,11 @@ const NewProducts = ({ product }) => {
                                 <span className="mb-2 flex justify-end items-center *:mx-1 w-full">< IoCheckmarkCircleOutline style={{ color: "green" }} />In stock</span>
                                 : <CgUnavailable style={{ color: "red" }} />}
                         </div>
-                        <Image className="h-52 max-w-52 min-w-52 "
+                        <Image className="h-52 max-w-52 min-w-40 "
                             src={image}
                             alt="product-image"
-                            width={200}
-                            height={300}
+                            width={100}
+                            height={100}
                         />
                         <span>{review}</span>
                         <p>{name}</p>
@@ -45,7 +47,7 @@ const NewProducts = ({ product }) => {
                     </Link>
 
 
-                </div >
+                </div>
 
             }
         </>
