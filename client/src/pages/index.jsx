@@ -3,6 +3,7 @@ import Products from "@/components/products/Products";
 import Brands from "@/components/brands/Brands";
 import SocialFeed from "@/components/socialFeed/SocialFeed";
 import Reviews from "@/components/Reviews/Reviews";
+import HomePageProducts from "@/components/products/homePageProducts";
 
 const Home = ({ products }) => {
   console.log(products)
@@ -10,7 +11,7 @@ const Home = ({ products }) => {
 
   return <div className="max_viewport">
     <Slider />
-    <Products products={products} />
+    <HomePageProducts products={products} />
     <Brands />
     <SocialFeed />
     <Reviews />

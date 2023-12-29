@@ -1,30 +1,22 @@
 import Image from "next/image";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
-import { format, render } from 'timeago.js'
 import { CgUnavailable } from "react-icons/cg";
 import Link from "next/link";
-
-import { SwiperSlide } from "swiper/react";
-
 
 const NewProducts = ({ product }) => {
     const { _id, name, image, price, stock, review, createdAt } = product
 
 
     // Get 1 hour form Current Time
-    const timeAgoFromNow = Date.now() - 7 * 24 * 60 * 60 * 1000
-
+    const timeAgoFromNow = Date.now() - 1 * 24 * 60 * 60 * 1000
     // Formating time into Human Readable
-
-
     const productCriationTimeStamp = new Date(createdAt).getTime()
 
 
 
     return (
         <>
-            {productCriationTimeStamp > timeAgoFromNow &&
-
+            {productCriationTimeStamp > timeAgoFromNow ?
                 <div
                     className={`m-2 p-2 min-w-fit w-full  flex items-center justify-center  hover:border-blue-400 hover:border duration-300 hover:scale-105 rounded-md 
                         
@@ -48,7 +40,7 @@ const NewProducts = ({ product }) => {
 
 
                 </div>
-
+                : <div className="bg-[#F5F7FF] mb-2 w-fit p-4">No New Arivals This Week</div>
             }
         </>
     );

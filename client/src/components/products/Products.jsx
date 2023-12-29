@@ -1,54 +1,34 @@
-import Link from "next/link";
-import Ad from "../ui/ad/Ad";
-import NewProducts from "./NewProducts";
-import style from "@/styles/Product.module.css"
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import { CgUnavailable } from 'react-icons/cg';
+import { IoCheckmarkCircleOutline } from 'react-icons/io5';
 
-const Products = ({ products }) => {
-    console.log(products)
+const Products = ({ product }) => {
+    const { _id, name, image, price, stock, review, createdAt } = product
+
     return (
+        <div
+            className={`m-2 p-2 min-w-fit w-full  flex items-center justify-center  hover:border-blue-400 hover:border duration-300 hover:scale-105 rounded-md 
+                        
+                        `}>
+            <Link href={`/product/${_id}`}>
+                <div className="flex justify-center items-center">
+                    {stock ?
+                        <span className="mb-2 flex justify-end items-center *:mx-1 w-full">< IoCheckmarkCircleOutline style={{ color: "green" }} />In stock</span>
+                        : <CgUnavailable style={{ color: "red" }} />}
+                </div>
+                <Image className="h-52 w-fit min-w-40"
+                    src={image}
+                    alt="product-image"
+                    width={500}
+                    height={100}
+                />
+                <span>{review}</span>
+                <p>{name}</p>
+                <p>{price}</p>
+            </Link>
 
-        <div className={style.global_product}>
-            <section className="flex justify-between items-center">
-                <h3 className="text-2xl font-semibold my-5">New Products</h3>
-                <Link href={'/product/new_products'} className="font-semibold">See More</Link>
-            </section>
-            <div className="grid md:grid-cols-4 grid-cols-2 gap-2 px-4">
-                {
-                    products?.slice(0, 6)?.map(product => <NewProducts key={product?._id} product={product} />)
-                }
-            </div>
-            <Ad />
-            <section className="flex justify-between items-center">
-                <h3 className="text-2xl font-semibold my-5">Accessories</h3>
-                <Link href={'/product/accessories'}>See More</Link>
-            </section>
-            <div className="grid md:grid-cols-4 grid-cols-2 gap-2 px-4">
-                {
-                    products.filter(data => data.category === 'accessories')
-                        ?.map(product => <NewProducts key={product?._id} product={product} />)
-                }
-            </div>
-            <section className="flex justify-between items-center">
-                <h3 className="text-2xl font-semibold my-5">Laptop</h3>
-                <Link href={'/product/laptop'}>See More</Link>
-            </section>
-            <div className="grid md:grid-cols-4 grid-cols-2 gap-2 px-4">
-                {
-                    products.filter(data => data.category === 'Laptop')
-                        ?.map(product => <NewProducts key={product?._id} product={product} />)
-                }
-            </div>
-            <section className="flex justify-between items-center">
-                <h3 className="text-2xl font-semibold my-5">Custom Pc</h3>
-                <Link href={'/product/custom_pc'}>See More</Link>
-            </section>
-
-            <div className="flex flex-row gap-3 overflow-x-auto">
-                {
-                    products.filter(data => data.category === 'Custom Pc')
-                        ?.map(product => <NewProducts key={product?._id} product={product} />)
-                }
-            </div>
 
         </div>
     );

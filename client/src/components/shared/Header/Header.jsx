@@ -64,10 +64,10 @@ const Header = () => {
                 <Link href={"/product/laptop"}>Laptop</Link>
               </li>
               <li>
-                <Link href={"/product/accessories"}>Tablet</Link>
+                <Link href={"/product/accessories"}>Accessories</Link>
               </li>
               <li>
-                <Link href={"/product/new_products"}>Featured</Link>
+                <Link href={"/product/featured"}>Featured</Link>
               </li>
               <li>
                 <Link
