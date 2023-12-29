@@ -10,3 +10,8 @@
   max-width: 1440px;
   margin: 0 auto;
 }
+
+.card :hover {
+  border: 1px solid #2563eb;
+  transition: 0.3s ease;
+}

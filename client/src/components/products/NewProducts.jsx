@@ -2,7 +2,6 @@ import Image from "next/image";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { format, render } from 'timeago.js'
 import { CgUnavailable } from "react-icons/cg";
-import styles from '@/styles/Product.module.css'
 import Link from "next/link";
 
 
@@ -17,17 +16,19 @@ const NewProducts = ({ product }) => {
 
 
     const productCriationTimeStamp = new Date(createdAt).getTime()
-    console.log(productCriationTimeStamp)
 
 
 
     return (
         <>
             {productCriationTimeStamp > timeAgoFromNow &&
+
                 <div
-                    className={`p-3 min-w-fit w-fit border rounded-md bg-white
-                    ${styles.body}
-                    `}>
+                    className={`m-2 p-3 min-w-fit w-fit border hover:border-blue-400 duration-300 hover:scale-105 rounded-md 
+                        
+                        `}>
+
+
                     <Link href={`/product/${_id}`}>
                         <div>
                             {stock ?
@@ -44,7 +45,11 @@ const NewProducts = ({ product }) => {
                         <p>{name}</p>
                         <p>{price}</p>
                     </Link>
-                </div >}
+
+
+                </div >
+
+            }
         </>
     );
 };

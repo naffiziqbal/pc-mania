@@ -1,12 +1,16 @@
 import Slider from "@/components/ui/Slider/Slider";
 import Products from "@/components/products/Products";
+import CategoryWiseProduct from "@/components/products/CategoryWiseProduct";
+
 
 const Home = ({ products }) => {
   console.log(products)
 
+
   return <div className="max_viewport">
     <Slider />
     <Products products={products} />
+    
   </div>;
 };
 
