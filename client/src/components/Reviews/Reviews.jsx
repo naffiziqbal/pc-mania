@@ -42,7 +42,7 @@ const Reviews = () => {
     }, [])
 
     return (
-        <div className=' mx-auto my-12 w-[70%] min-h-96 bg-[#F5F7FF] flex justify-center items-center rounded-lg'>
+        <div className=' mx-auto my-12 w-[70%] min-h-96 bg-[#F5F7FF]  rounded-lg'>
             <Swiper
                 modules={[Autoplay, Pagination, Scrollbar, A11y]}
                 loop={true}
