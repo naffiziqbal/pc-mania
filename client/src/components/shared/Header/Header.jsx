@@ -58,7 +58,7 @@ const Header = () => {
           <section className="w-full  ">
             <ul className="hidden md:flex flex-row justify-between ">
               <li>
-                <Link href={"/products/custom_pc"}>Desktop</Link>
+                <Link href={"/product/custom_pc"}>Desktop</Link>
               </li>
               <li>
                 <Link href={"/product/laptop"}>Laptop</Link>
