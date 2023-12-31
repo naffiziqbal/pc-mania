@@ -1,4 +1,5 @@
 import Button from '@/components/ui/Button/Button';
+import { addToLocalStorage, getLocalStorageCart } from '@/utils/handleLocalStorage';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
@@ -6,16 +7,12 @@ const ProductDetails = ({ product }) => {
     const { data } = product
     const [quantity, setQuantity] = useState(1)
     const { _id, name, image, description, price } = data
-    const [userReview, setUserReview] = useState([])
-    // useEffect(() => {
-    //     const getUserReview = async () => {
-    //         const data = await fetch(`${process.env.SERVER_URL}/review/${_id}`)
-    //         const review = await data.json()
-    //         setUserReview(review)
-    //     }
-    //     getUserReview()
-    // }, [_id])
-    console.log(data)
+
+    const handleCart = () => {
+        addToLocalStorage(_id)
+        console.log("product added to cart")
+    }
+
 
     return (
         <div className='flex md:flex-row flex-col w-full justify-between'>
@@ -30,19 +27,27 @@ const ProductDetails = ({ product }) => {
                 <div className='flex items-center mt-5'>
                     <label htmlFor="quantity" className='w-fit h-fit bg-[#f5f7f7] p-3'>Quantity</label>
                     <div className='flex items-center'>
-                        <input type="number" value={quantity} className='p-3 border outline-none' />
-                        <button className=' w-fit h-fit border text-2xl font-bold py-2 px-5 hover:bg-[#f5f5f7]  duration-300*:
+                        <input type="number"
+                            defaultValue={quantity}
+                            className='p-3 border outline-none' />
+                        <button
+                            className='w-fit h-fit border text-2xl font-bold py-2 px-5 hover:bg-[#f5f5f7]  duration-300*:
                         mx-2'
-                            onClick={() => setQuantity(quantity - 1)}
-                        >-</button>
-                        <button className=' w-fit h-fit border text-xl font-bold py-2 px-5 hover:bg-[#f5f5f7] duration-300 *:
+                            onClick={() => setQuantity(quantity > 1 ? quantity - 1 : null)}
+                        > &minus; </button>
+                        <button
+                            className=' w-fit h-fit border text-xl font-bold py-2 px-5 hover:bg-[#f5f5f7] duration-300 *:
                         mx-2'
                             onClick={() => { setQuantity(quantity + 1) }}
-                        >+</button>
+                        >
+                            &#43;
+                        </button>
                     </div>
                 </div>
                 <div className='flex mt-5  w-fit gap-5 p-3 *:text-xl font-semibold *:duration-300'>
-                    <button className='w-1/2 text-nowrap bg-blue-400 py-3 px-5 items-center text-white rounded-full hover:bg-black border '>Add to Cart</button>
+                    <button className='w-1/2 text-nowrap bg-blue-400 py-3 px-5 items-center text-white rounded-full hover:bg-black border '
+                        onClick={handleCart}
+                    >Add to Cart</button>
                     <button className='w-1/2 md:w-full text-nowrap border py-3 px-5 items-center  rounded-full hover:bg-black hover:text-white'>Buy Now</button>
                 </div>
             </div>
