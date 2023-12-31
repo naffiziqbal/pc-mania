@@ -20,7 +20,7 @@ const ProductDetails = ({ product }) => {
     return (
         <div className='flex md:flex-row flex-col w-full justify-between'>
             <Image className='w-fit max-w-1/2' src={image} width={400} height={400} layout='fixed' alt='' />
-            <div className='w-1/2'>
+            <div className='md:w-1/2 w-full'>
                 <h3 className='text-3xl'>{name}</h3>
                 <div className='h-24  w-full pt-2'>
                     review Section
@@ -40,7 +40,10 @@ const ProductDetails = ({ product }) => {
                             onClick={() => { setQuantity(quantity + 1) }}
                         >+</button>
                     </div>
-
+                </div>
+                <div className='flex mt-5  w-fit gap-5 p-3 *:text-xl font-semibold *:duration-300'>
+                    <button className='w-1/2 text-nowrap bg-blue-400 py-3 px-5 items-center text-white rounded-full hover:bg-black border '>Add to Cart</button>
+                    <button className='w-1/2 md:w-full text-nowrap border py-3 px-5 items-center  rounded-full hover:bg-black hover:text-white'>Buy Now</button>
                 </div>
             </div>
         </div >
