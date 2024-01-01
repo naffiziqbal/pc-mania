@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { CgUnavailable } from "react-icons/cg";
 import Link from "next/link";

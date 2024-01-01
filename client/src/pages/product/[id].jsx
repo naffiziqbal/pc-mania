@@ -1,6 +1,6 @@
 import Button from '@/components/ui/Button/Button';
 import { addToLocalStorage, getLocalStorageCart } from '@/utils/handleLocalStorage';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import React, { useEffect, useState } from 'react';
 
 const ProductDetails = ({ product }) => {

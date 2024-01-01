@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import React from 'react';
 import payments from './images/card.png'
 import { FaFacebook, FaInstagram, FaInstagramSquare } from 'react-icons/fa';

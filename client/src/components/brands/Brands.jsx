@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import brandImg1 from './brands/image 33-1.png'
 import brandImg2 from './brands/image 33-2.png'
 import brandImg3 from './brands/image 33-3.png'

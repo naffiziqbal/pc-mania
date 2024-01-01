@@ -5,7 +5,7 @@ import sliderImage from "./images/slider.png"
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 const Slider = () => {
 
