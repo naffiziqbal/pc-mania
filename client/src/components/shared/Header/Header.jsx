@@ -13,11 +13,11 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 const Header = () => {
   const [cartItems, setCartItems] = useState(0)
 
-  useEffect(() => {
-    const cart = getLocalStorageCart()
-    const arrayOfObject = Object.keys(cart)
-    setCartItems(arrayOfObject.length)
-  }, [cartItems])
+  // useEffect(() => {
+  //   const cart = getLocalStorageCart()
+  //   const arrayOfObject = Object.keys(cart)
+  //   setCartItems(arrayOfObject.length)
+  // }, [cartItems])
 
   return (
     <div className="border-b-2">

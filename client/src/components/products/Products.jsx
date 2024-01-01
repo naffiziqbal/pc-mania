@@ -21,8 +21,9 @@ const Products = ({ product }) => {
                 <Image className="h-52 w-fit min-w-40"
                     src={image}
                     alt="product-image"
-                    width={500}
-                    height={100}
+                    width={200}
+                    height={200}
+                    layout="fixed"
                 />
                 <span>{review}</span>
                 <p>{name}</p>

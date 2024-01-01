@@ -6,7 +6,7 @@ import Reviews from "@/components/Reviews/Reviews";
 import HomePageProducts from "@/components/products/homePageProducts";
 
 const Home = ({ products }) => {
-  console.log(products)
+  // console.log(products)
 
 
   return <div className="max_viewport">

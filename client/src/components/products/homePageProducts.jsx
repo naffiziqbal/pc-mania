@@ -13,7 +13,7 @@ const HomePageProducts = ({ products }) => {
                 <h3 className="text-2xl font-semibold my-5">New Products</h3>
                 <Link href={'/product/new_products'} className="font-semibold">See More</Link>
             </section>
-            <div className="grid md:grid-cols-4 grid-cols-2 gap-2 px-4">
+            <div className="grid  md:grid-cols-4 grid-cols-2 gap-2 px-4">
                 {
                     products?.slice(0, 6)?.map(product => <NewProducts key={product?._id} product={product} />)
                 }
