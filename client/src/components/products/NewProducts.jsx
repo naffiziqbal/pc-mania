@@ -8,7 +8,7 @@ const NewProducts = ({ product }) => {
 
 
     // Get 1 hour form Current Time
-    const timeAgoFromNow = Date.now() - 1 * 24 * 60 * 60 * 1000
+    const timeAgoFromNow = Date.now() - 30 * 24 * 60 * 60 * 1000
     // Formating time into Human Readable
     const productCriationTimeStamp = new Date(createdAt).getTime()
 
@@ -18,7 +18,7 @@ const NewProducts = ({ product }) => {
         <>
             {productCriationTimeStamp > timeAgoFromNow ?
                 <div
-                    className={`m-2 p-2 min-w-fit w-full  flex items-center justify-center  hover:border-blue-400 hover:border duration-300 hover:scale-105 rounded-md 
+                    className={`m-2 p-2 min-w-fit w-full h-fit  flex items-center justify-center  hover:border-blue-400 hover:border duration-300 hover:scale-105 rounded-md 
                         
                         `}>
                     <Link href={`/product/${_id}`}>
