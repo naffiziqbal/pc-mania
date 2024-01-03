@@ -1,5 +1,6 @@
+import { getLocalStorageCart } from "@/utils/handleLocalStorage";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CiShoppingCart,
   CiSearch,
@@ -7,17 +8,15 @@ import {
   CiInstagram,
 } from "react-icons/ci";
 import { IoPersonCircleOutline } from "react-icons/io5";
-
-const Header = () => {
+const Header = ({ cart }) => {
+  console.log(cart)
   const [cartItems, setCartItems] = useState(0)
 
-
-
-  // useEffect(() => {
-  //   const cart = getLocalStorageCart()
-  //   const arrayOfObject = Object.keys(cart)
-  //   setCartItems(arrayOfObject.length)
-  // }, [cartItems])
+  useEffect(() => {
+    const cart = getLocalStorageCart()
+    const arrayOfObject = Object.keys(cart)
+    setCartItems(arrayOfObject.length)
+  }, [cartItems])
 
   return (
     <div className="border-b-2">
@@ -95,7 +94,7 @@ const Header = () => {
           <CiSearch />
           <div className="w-fit relative">
             <CiShoppingCart className="  h-9 w-6 cursor-pointer " />
-            <span className="absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center">{cartItems}</span>
+            <span className="absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center">{cart.length ? cart.length : cartItems}</span>
           </div>
           <IoPersonCircleOutline />
         </section>
