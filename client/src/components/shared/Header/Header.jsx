@@ -9,7 +9,6 @@ import {
 } from "react-icons/ci";
 import { IoPersonCircleOutline } from "react-icons/io5";
 const Header = ({ cart }) => {
-  console.log(cart)
   const [cartItems, setCartItems] = useState(0)
 
   useEffect(() => {

@@ -8,7 +8,6 @@ import React, { useState } from 'react';
 
 const ProductDetails = ({ product }) => {
     const dispatch = useAppDispatch()
-    console.log(product)
     const { data } = product
     const [quantity, setQuantity] = useState(1)
     const { _id, name, image, description, price } = data
