@@ -5,6 +5,7 @@ import style from "@/styles/Product.module.css"
 import Products from "./Products";
 import { useSelector } from "react-redux";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import NewProductCarousel from "../ProductCarousel/NewProductCarousel";
 
 
 const HomePageProducts = ({ products }) => {
@@ -18,17 +19,8 @@ const HomePageProducts = ({ products }) => {
                 <h3 className="text-2xl font-semibold my-5">New Products</h3>
                 <Link href={'/product/new_products'} className="font-semibold">See More</Link>
             </section>
-            <div className="">
-                <Carousel>
-                    <CarouselContent>
-                        {
-                            products?.slice(0, 6)?.map(product => <NewProducts key={product?._id} product={product} />)
-                        }
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                </Carousel>
-            </div>
+            {/*  */}
+            <NewProductCarousel products={products} />
             <Ad />
             <section className="flex justify-between items-center">
                 <h3 className="text-2xl font-semibold my-5">Accessories</h3>

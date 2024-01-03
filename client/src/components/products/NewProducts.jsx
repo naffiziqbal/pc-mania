@@ -18,7 +18,7 @@ const NewProducts = ({ product }) => {
 
     return (
         <>
-            <CarouselItem className="basis-1/4">
+            <CarouselItem className="md:basis-1/4 basis-1/2">
                 {productCriationTimeStamp > timeAgoFromNow ?
                     <div
                         className={`m-2 p-2 min-w-fit w-full flex items-center justify-center  hover:border-blue-400 hover:border duration-300 hover:scale-105 rounded-md 

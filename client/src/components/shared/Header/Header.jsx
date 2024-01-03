@@ -8,6 +8,10 @@ import {
   CiInstagram,
 } from "react-icons/ci";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import {
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button";
 const Header = ({ cart }) => {
   const [cartItems, setCartItems] = useState(0)
 
@@ -92,7 +96,9 @@ const Header = ({ cart }) => {
           {/* Header End */}
           <CiSearch />
           <div className="w-fit relative">
-            <CiShoppingCart className="  h-9 w-6 cursor-pointer " />
+            <Link href={'/cart'}>
+              <CiShoppingCart className="  h-9 w-6 cursor-pointer " />
+            </Link>
             <span className="absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center">{cart.length ? cart.length : cartItems}</span>
           </div>
           <IoPersonCircleOutline />
