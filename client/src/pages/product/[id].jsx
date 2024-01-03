@@ -1,14 +1,20 @@
-import Button from '@/components/ui/Button/Button';
+
+import { useAppDispatch } from '@/redux/hooks/hooks';
+import { Add_TO_CART } from '@/redux/product/cartSlice';
 import { addToLocalStorage, getLocalStorageCart } from '@/utils/handleLocalStorage';
 import Image from "next/legacy/image";
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+
 
 const ProductDetails = ({ product }) => {
+    const dispatch = useAppDispatch()
+    console.log(product)
     const { data } = product
     const [quantity, setQuantity] = useState(1)
     const { _id, name, image, description, price } = data
 
     const handleCart = () => {
+        dispatch(Add_TO_CART({ data, quantity }))
         addToLocalStorage(_id)
         console.log("product added to cart")
     }
@@ -63,7 +69,7 @@ export default ProductDetails;
 export const getStaticPaths = async () => {
     const res = await fetch(`https://pc-mania.vercel.app/api/v1/product/all-products`)
     const { data } = await res.json()
-    console.log(data?.map(data => ({ params: { id: data?._id } })))
+    data?.map(data => ({ params: { id: data?._id } }))
 
     return {
         paths: data?.map(data => ({ params: { id: data?._id } })),
@@ -74,10 +80,8 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const id = context.params.id
-    console.log(id)
     // const id = `658baf00e219e5b67cbb810a`
     const data = await fetch(`https://pc-mania.vercel.app/api/v1/product/${id}`)
-    console.log(data)
     const product = await data.json()
     return {
         props: {

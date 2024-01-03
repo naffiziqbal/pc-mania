@@ -3,9 +3,12 @@ import Ad from "../ui/ad/Ad";
 import NewProducts from "./NewProducts";
 import style from "@/styles/Product.module.css"
 import Products from "./Products";
+import { useSelector } from "react-redux";
 
 const HomePageProducts = ({ products }) => {
 
+    const data = useSelector(state => state.cart)
+    console.log(data)
     return (
 
         <div className={style.global_product}>

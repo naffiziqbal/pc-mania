@@ -1,7 +1,5 @@
-import { getLocalStorageCart } from "@/utils/handleLocalStorage";
-import Image from "next/legacy/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import {
   CiShoppingCart,
   CiSearch,
@@ -12,6 +10,8 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 
 const Header = () => {
   const [cartItems, setCartItems] = useState(0)
+
+
 
   // useEffect(() => {
   //   const cart = getLocalStorageCart()
