@@ -10,28 +10,26 @@ export const addToLocalStorage = (product) => {
     }
     // Add items
     // console.log(cart)
+    // Filter Cart To check if Item already exits
     const existingProduct = cart.map(data => data._id === product._id)
-    // console.log(existingProduct)
+    //Find already cart Item to Update Quantity
+    let newCart = cart.find(data => data._id === product._id)
     if (!existingProduct.length) {
         cart.push(product)
         localStorage.setItem('cart', JSON.stringify(cart))
+    } else if (newCart) {
+        //Assingng New Cart into Cart agter updating Quantity
+        cart[newCart.quantity = product.quantity + newCart.quantity]
+        localStorage.setItem('cart', JSON.stringify(cart))
     } else {
-        let newCart = cart.find(data => data._id === product._id)
-        // console.log(newCart)
-        if (newCart) {
-            cart[newCart.quantity = product.quantity + newCart.quantity]
-            // cart.push(newCart)
-            // console.log(cart)
-            localStorage.setItem('cart', JSON.stringify(cart))
-        } else {
-            cart.push(product)
-            localStorage.setItem('cart', JSON.stringify(cart))
+        cart.push(product)
+        localStorage.setItem('cart', JSON.stringify(cart))
 
-        }
     }
-
-
 }
+
+
+
 
 
 export const getLocalStorageCart = () => {
