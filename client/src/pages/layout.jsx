@@ -12,7 +12,7 @@ export default function Layout({ children }) {
     */
     <>
       <Header cart={cart} />
-      <main className="min-h-screen max_viewport">{children}</main>
+      <main className="min-h-96 max_viewport overflow-hidden px-3 pt-40">{children}</main>
       <Footer />
 
     </>

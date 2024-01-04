@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table"
 import { getLocalStorageCart } from "@/utils/handleLocalStorage";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -36,7 +37,7 @@ const Cart = () => {
     // console.log(content)
     return (
         <div>
-            <Table>
+            {cartItem.length ? <Table>
                 <TableCaption>A list of your  Cart.</TableCaption>
                 <TableHeader>
                     <TableRow>
@@ -48,7 +49,9 @@ const Cart = () => {
                     </TableRow>
                 </TableHeader>
                 {content}
-            </Table>
+            </Table> : <div className=" h-96 justify-center items-center flex"><span className="text-3xl">Please Add Some Product First...</span>
+                <span className="text-blue-400 mt-2 mx-2 underline"><Link href='/'>Back to home</Link></span>
+            </div>}
         </div>
     );
 };

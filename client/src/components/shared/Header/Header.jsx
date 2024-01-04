@@ -12,8 +12,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/router";
 const Header = ({ cart }) => {
   // console.log(cart)
+  const router = useRouter();
   const [cartItems, setCartItems] = useState(null)
 
   useEffect(() => {
@@ -23,19 +25,19 @@ const Header = ({ cart }) => {
   }, [cartItems])
 
   return (
-    <div className="border-b-2">
+    <div className="border-b-2 fixed top-0 w-full z-50 bg-white">
       {/* Top Header */}
       <div className="text-[.9rem] bg-black  min-h-fit p-2 text-white">
-        <div className="max_viewport flex justify-between items-center">
+        <div className="max_viewport flex flex-col justify-start md:flex-row md:justify-between md:items-center">
           <section>Date</section>
           <section>
-            <p>
+            <p className="text-wrap">
               Visit our showroom in 1234 Street Adress City Address, 1234
               Contact Us
             </p>
           </section>
-          <section className="flex justify-between *:mx-2 items-center *:cursor-pointer">
-            <span>+880 1234567898</span>
+          <section className="flex md:justify-between [&>*:nth-child(n+2)]:mx-2 items-center *:cursor-pointer">
+            <span> <a href='tel:+8801234567898'>(+880) 1234567898</a></span>
             <span>
               <a
                 className="*:w-6 *:h-6"
@@ -71,21 +73,21 @@ const Header = ({ cart }) => {
           <section className="w-full  ">
             <ul className="hidden md:flex flex-row justify-between ">
               <li>
-                <Link href={"/product/custom_pc"}>Desktop</Link>
+                <Link className={`${router.pathname == "/product/custom_pc" && "text-blue-400"}`} href={"/product/custom_pc"}>Desktop</Link>
               </li>
               <li>
-                <Link href={"/product/laptop"}>Laptop</Link>
+                <Link className={`${router.pathname == "/product/laptop" && "text-blue-400"}`} href={"/product/laptop"}>Laptop</Link>
               </li>
               <li>
-                <Link href={"/product/accessories"}>Accessories</Link>
+                <Link className={`${router.pathname == "/product/accessories" && "text-blue-400"}`} href={"/product/accessories"}>Accessories</Link>
               </li>
               <li>
-                <Link href={"/product/featured"}>Featured</Link>
+                <Link className={`${router.pathname == "/product/featured" && "text-blue-400"}`} href={"/product/featured"}>Featured</Link>
               </li>
               <li>
                 <Link
-                  className="py-2  px-6 rounded-full border-2 border-blue-600"
-                  href={"/"}
+                  className={`${router.pathname === '/our_deals' ? 'bg-blue-400 text-white' : "py-2  px-6 rounded-full border-2 border-blue-600"}`}
+                  href={"/our_deals"}
                 >
                   Our Deals
                 </Link>
@@ -97,7 +99,7 @@ const Header = ({ cart }) => {
           {/* Header End */}
           <CiSearch />
           <div className="w-fit relative">
-            <Link href={'/cart'}>
+            <Link className={`${router.pathname === "/cart" && "text-blue-600"}`} href={'/cart'}>
               <CiShoppingCart className="  h-9 w-6 cursor-pointer " />
             </Link>
             <span className={` ${!cart.length && !cartItems ? "hidden" : "absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center"} `}>{cart.length ? cart.length + cartItems : cartItems}</span>
