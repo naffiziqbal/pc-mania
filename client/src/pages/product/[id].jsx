@@ -13,10 +13,10 @@ const ProductDetails = ({ product }) => {
     const { _id, name, image, description, price } = data
 
     const handleCart = () => {
-        dispatch(Add_TO_CART({ data, quantity }))
-        addToLocalStorage({
-            ...data, quantity: quantity
-        })
+        dispatch(Add_TO_CART({ ...data, quantity: quantity }))
+        // addToLocalStorage({
+        //     ...data, quantity: quantity
+        // })
         console.log("product added to cart")
     }
 

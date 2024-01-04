@@ -3,7 +3,8 @@ import Footer from "@/components/shared/footer/Footer";
 import { useSelector } from "react-redux";
 
 export default function Layout({ children }) {
-  const { cart } = useSelector(state => state.cart)
+  const cart = useSelector(state => state.cart)
+  // console.log(cart)
 
   return (
     /*

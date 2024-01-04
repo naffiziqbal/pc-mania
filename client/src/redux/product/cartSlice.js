@@ -9,19 +9,26 @@ export const cartSlice = createSlice({
   },
   reducers: {
     Add_TO_CART: (state, action) => {
-      const existingProduct = state.cart.map(
+      const existingProduct = state?.cart?.filter(
         (product) => product._id === action.payload._id
       );
-      if (existingProduct) {
-        const product = {
-          ...action.payload,
-          ...(action.payload.qunatity += 1),
-        };
-        console.log(product);
+      // console.log(!existingProduct, "before");
+
+      if (!existingProduct.length) {
+        const product = { ...action.payload };
         state.cart.push(product);
       } else {
-        const product = { ...state.cart.qunatity };
-        console.log(product);
+        const newCart = state.cart.find(
+          (data) => data._id === action.payload._id
+        );
+        // console.log(newCart);
+        // ? If Product exist Update product Quanity
+        if (newCart) {
+          state.cart[
+            (newCart.quantity = action.payload.quantity + newCart.quantity)
+          ];
+        }
+        // console.log("else");
       }
     },
   },
