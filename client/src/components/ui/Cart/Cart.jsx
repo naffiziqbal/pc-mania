@@ -13,14 +13,12 @@ import { useSelector } from "react-redux";
 
 
 const Cart = () => {
-    
+
     useEffect(() => {
         const data = getLocalStorageCart()
         console.log(data)
     }, [])
 
-    useEffect(() => {
-    }, [])
     return (
         <div>
             <Table>
