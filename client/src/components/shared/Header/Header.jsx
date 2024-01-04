@@ -100,7 +100,7 @@ const Header = ({ cart }) => {
             <Link href={'/cart'}>
               <CiShoppingCart className="  h-9 w-6 cursor-pointer " />
             </Link>
-            <span className={` ${!cart.length && !cartItems ? "hidden" : "absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center"} `}>{cart.length ? cart.length : cartItems}</span>
+            <span className={` ${!cart.length && !cartItems ? "hidden" : "absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center"} `}>{cart.length ? cart.length + cartItems : cartItems}</span>
           </div>
           <IoPersonCircleOutline />
         </section>
