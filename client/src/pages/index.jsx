@@ -4,18 +4,30 @@ import Brands from "@/components/brands/Brands";
 import SocialFeed from "@/components/socialFeed/SocialFeed";
 import Reviews from "@/components/Reviews/Reviews";
 import HomePageProducts from "@/components/products/homePageProducts";
+import Head from "next/head";
 
 const Home = ({ products }) => {
   // console.log(products)
 
 
-  return <div className="max_viewport">
-    <Slider />
-    <HomePageProducts products={products} />
-    <Brands />
-    <SocialFeed />
-    <Reviews />
-  </div>;
+  return <>
+    <Head>
+      <title>Pc Mania || A Shop Where You can Buy Your Dream Build</title>
+      <meta charset="UTF-8" />
+      <meta property="og:title" content="Pc Mania" key="title" />
+      <meta name="og:keywords" content="laptop, desktop, mouse, keyboard" />
+      <meta name="og:author" content="Nafiz Iqbal" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </Head>
+    <div className="max_viewport">
+
+      <Slider />
+      <HomePageProducts products={products} />
+      <Brands />
+      <SocialFeed />
+      <Reviews />
+    </div>;
+  </>
 };
 
 export default Home;

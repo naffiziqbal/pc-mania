@@ -14,10 +14,10 @@ const ProductDetails = ({ product }) => {
 
     const handleCart = (e) => {
         e.preventDefault()
-        // dispatch(Add_TO_CART({ ...data, quantity: quantity }))
-        // addToLocalStorage({
-        //     ...data, quantity: quantity
-        // })
+        dispatch(Add_TO_CART({ ...data, quantity: quantity }))
+        addToLocalStorage({
+            ...data, quantity: quantity
+        })
         console.log(quantity)
     }
 

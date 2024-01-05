@@ -8,6 +8,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { getLocalStorageCart } from "@/utils/handleLocalStorage";
+import { DeleteIcon, Trash2Icon } from "lucide-react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,12 +18,24 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
     const [cartItem, setCartItem] = useState([])
-
+    // console.log(cartItem)
     useEffect(() => {
         const data = getLocalStorageCart()
         // console.log(data)
         setCartItem(data)
     }, [])
+    const handleDeleteProduct = (id) => {
+        if (id) {
+            const newCart = cartItem.filter(data => data._id !== id)
+            localStorage.setItem('cart', JSON.stringify(newCart))
+            setCartItem(newCart)
+            // console.log(newCart)
+        } else {
+            // console.log('else')
+            localStorage.removeItem('cart')
+            setCartItem([])
+        }
+    }
 
     const content = cartItem.map(data => <TableBody key={data._id}>
         <TableRow>
@@ -33,6 +46,9 @@ const Cart = () => {
             <TableCell>{data.quantity}</TableCell>
             <TableCell>{data.price}</TableCell>
             <TableCell className="text-right">{data.price * data.quantity}</TableCell>
+            <TableCell>
+                <Trash2Icon onClick={() => handleDeleteProduct(data?._id)} />
+            </TableCell>
         </TableRow>
     </TableBody>)
     // console.log(content)
@@ -50,6 +66,9 @@ const Cart = () => {
                             <TableHead>Quantity</TableHead>
                             <TableHead>Price</TableHead>
                             <TableHead className="text-right">Total Amount</TableHead>
+                            <TableHead>
+                                <Trash2Icon onClick={() => handleDeleteProduct()} />
+                            </TableHead>
                         </TableRow>
                     </TableHeader>
                     {content}
