@@ -36,7 +36,7 @@ const Reviews = () => {
             const res = await fetch(`https://pc-mania.vercel.app/api/v1/review/all-review`)
             const { data } = await res.json()
             setReviews(data)
-            console.log(data)
+            // console.log(data)
         }
         getReviews()
     }, [])

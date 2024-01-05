@@ -11,7 +11,7 @@ import NewProductCarousel from "../ProductCarousel/NewProductCarousel";
 const HomePageProducts = ({ products }) => {
 
     const data = useSelector(state => state.cart)
-    console.log(data)
+    // console.log(data)
     return (
 
         <div className={style.global_product}>
