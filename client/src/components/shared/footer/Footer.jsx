@@ -24,8 +24,8 @@ const Footer = () => {
             </header>
             <main className='max_viewport w-full'>
                 <div className='flex justify-between flex-wrap'>
-                    <section>
-                        <h4 className='text-lg text-slate-400'>Information</h4>
+                    <section className="mx-2">
+                        <h4 className='text-lg text-slate-400 '>Information</h4>
                         <ul className='*:text-xs tracking-wider my-2 *:my-1'>
                             <li>
                                 <Link href={'/'}>About us</Link>
@@ -45,8 +45,8 @@ const Footer = () => {
                         </ul>
                     </section>
 
-                    <section>
-                        <h4 className='text-lg text-slate-400'>Information</h4>
+                    <section className="mx-2">
+                        <h4 className='text-lg text-slate-400 '>Information</h4>
                         <ul className='*:text-xs tracking-wider my-2 *:my-1'>
                             <li>
                                 <Link href={'/'}>About us</Link>
@@ -65,8 +65,8 @@ const Footer = () => {
                             </li>
                         </ul>
                     </section>
-                    <section>
-                        <h4 className='text-lg text-slate-400'>Information</h4>
+                    <section className="mx-2">
+                        <h4 className='text-lg text-slate-400 '>Information</h4>
                         <ul className='*:text-xs tracking-wider my-2 *:my-1'>
                             <li>
                                 <Link href={'/'}>About us</Link>
@@ -85,8 +85,8 @@ const Footer = () => {
                             </li>
                         </ul>
                     </section>
-                    <section>
-                        <h4 className='text-lg text-slate-400'>Information</h4>
+                    <section className="mx-2">
+                        <h4 className='text-lg text-slate-400 '>Information</h4>
                         <ul className='*:text-xs tracking-wider my-2 *:my-1'>
                             <li>
                                 <Link href={'/'}>About us</Link>
@@ -105,8 +105,8 @@ const Footer = () => {
                             </li>
                         </ul>
                     </section>
-                    <section>
-                        <h4 className='text-lg text-slate-400'>Information</h4>
+                    <section className="mx-2">
+                        <h4 className='text-lg text-slate-400 '>Information</h4>
                         <ul className='*:text-xs tracking-wider my-2 *:my-1'>
                             <li>
                                 <Link href={'/'}>About us</Link>
@@ -125,8 +125,8 @@ const Footer = () => {
                             </li>
                         </ul>
                     </section>
-                    <section>
-                        <h4 className='text-lg text-slate-400'>Information</h4>
+                    <section className="mx-2">
+                        <h4 className='text-lg text-slate-400 '>Information</h4>
                         <ul className='*:text-xs tracking-wider my-2 *:my-1'>
                             <li>
                                 <Link href={'/'}>About us</Link>
@@ -155,7 +155,7 @@ const Footer = () => {
                         <FaInstagramSquare />
                     </section>
                     <section>
-                        <Image src={payments} alt='' width={200} height={100} />
+                        <Image src={payments} alt='' width={200} height={50} layout="fixed" />
                     </section>
                     <section className='mx-2'>
                         <p>Copyright &copy;<a className='text-blue-500 underline' href='https://www.fiverr.com/naffiziqbal' target='_blank'>Nafiz Iqbal</a></p>
