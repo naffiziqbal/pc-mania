@@ -8,6 +8,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { getLocalStorageCart } from "@/utils/handleLocalStorage";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -36,23 +37,27 @@ const Cart = () => {
     </TableBody>)
     // console.log(content)
     return (
-        <div>
-            {cartItem.length ? <Table>
-                <TableCaption>A list of your  Cart.</TableCaption>
-                <TableHeader>
-                    <TableRow>
-                        <TableHead className="w-[100px]">Image</TableHead>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Quantity</TableHead>
-                        <TableHead>Price</TableHead>
-                        <TableHead className="text-right">Total Amount</TableHead>
-                    </TableRow>
-                </TableHeader>
-                {content}
-            </Table> : <div className=" h-96 justify-center items-center flex"><span className="text-3xl">Please Add Some Product First...</span>
-                <span className="text-blue-400 mt-2 mx-2 underline"><Link href='/'>Back to home</Link></span>
-            </div>}
-        </div>
+        <><Head>
+            <title>Cart</title>
+        </Head>
+            <div>
+                {cartItem.length ? <Table>
+                    <TableCaption>A list of your  Cart.</TableCaption>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="w-[100px]">Image</TableHead>
+                            <TableHead>Name</TableHead>
+                            <TableHead>Quantity</TableHead>
+                            <TableHead>Price</TableHead>
+                            <TableHead className="text-right">Total Amount</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    {content}
+                </Table> : <div className=" h-96 justify-center items-center flex"><span className="text-3xl">Please Add Some Product First...</span>
+                    <span className="text-blue-400 mt-2 mx-2 underline"><Link href='/'>Back to home</Link></span>
+                </div>}
+            </div>
+        </>
     );
 };
 

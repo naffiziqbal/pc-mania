@@ -12,12 +12,13 @@ const ProductDetails = ({ product }) => {
     const [quantity, setQuantity] = useState(1)
     const { _id, name, image, description, price } = data
 
-    const handleCart = () => {
-        dispatch(Add_TO_CART({ ...data, quantity: quantity }))
-        addToLocalStorage({
-            ...data, quantity: quantity
-        })
-        console.log("product added to cart")
+    const handleCart = (e) => {
+        e.preventDefault()
+        // dispatch(Add_TO_CART({ ...data, quantity: quantity }))
+        // addToLocalStorage({
+        //     ...data, quantity: quantity
+        // })
+        console.log(quantity)
     }
 
 
@@ -35,8 +36,10 @@ const ProductDetails = ({ product }) => {
                     <label htmlFor="quantity" className='w-fit h-fit bg-[#f5f7f7] p-3'>Quantity</label>
                     <div className='flex items-center'>
                         <input type="number"
+                            name='itemQuantity'
+                            readOnly
                             defaultValue={quantity}
-                            className='p-3 border outline-none' />
+                            className='p-3 border outline-none w-full' />
                         <button
                             className='w-fit h-fit border text-2xl font-bold py-2 px-5 hover:bg-[#f5f5f7]  duration-300*:
                         mx-2'

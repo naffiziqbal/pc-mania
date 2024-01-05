@@ -8,10 +8,7 @@ import {
   CiInstagram,
 } from "react-icons/ci";
 import { IoPersonCircleOutline } from "react-icons/io5";
-import {
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button";
+
 import { useRouter } from "next/router";
 const Header = ({ cart }) => {
   // console.log(cart)
@@ -27,7 +24,7 @@ const Header = ({ cart }) => {
   return (
     <div className="border-b-2 fixed top-0 w-full z-50 bg-white">
       {/* Top Header */}
-      <div className="text-[.9rem] bg-black  min-h-fit p-2 text-white">
+      {/* <div className="text-[.9rem] bg-black  min-h-fit p-2 text-white">
         <div className="max_viewport flex flex-col justify-start md:flex-row md:justify-between md:items-center">
           <section>Date</section>
           <section>
@@ -58,7 +55,7 @@ const Header = ({ cart }) => {
             </span>
           </section>
         </div>
-      </div>
+      </div> */}
       {/* Main Header */}
 
       <div className="max_viewport flex justify-between items-center py-5 font-bold">
