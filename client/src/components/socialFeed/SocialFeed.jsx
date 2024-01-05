@@ -24,7 +24,7 @@ const SocialFeed = () => {
                                 width={100}
                                 height={100}
                                 alt="img" />
-                            <p className="text-center text-sm font-semibold">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet repudiandae quaerat labore autem, totam tenetur blanditiis itaque dolorum delectus modi quidem vero, ipsam, et ea dignissimos explicabo quis quas eos!</p>
+                            <p className="text-pretty text-sm font-semibold">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet repudiandae quaerat labore autem, totam tenetur.....</p>
                         </div>
                     </div>)
                 }

@@ -1,4 +1,13 @@
 import { getLocalStorageCart } from "@/utils/handleLocalStorage";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
@@ -10,6 +19,8 @@ import {
 import { IoPersonCircleOutline } from "react-icons/io5";
 
 import { useRouter } from "next/router";
+import { FaHamburger } from "react-icons/fa";
+import { MenuIcon } from "lucide-react";
 const Header = ({ cart }) => {
   // console.log(cart)
   const router = useRouter();
@@ -92,7 +103,7 @@ const Header = ({ cart }) => {
             </ul>
           </section>
         </div>
-        <section className="flex flex-row w-fit *:mx-2 *:h-9 *:w-6 *:cursor-pointer ">
+        <section className="flex flex-row w-fit  *:mx-2 *:h-9 *:w-6 *:cursor-pointer ">
           {/* Header End */}
           <CiSearch />
           <div className="w-fit relative">
@@ -102,7 +113,44 @@ const Header = ({ cart }) => {
             <span className={` ${!cart.length && !cartItems ? "hidden" : "absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center"} `}>{cart.length ? cart.length + cartItems : cartItems}</span>
           </div>
           <IoPersonCircleOutline />
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger>
+                <MenuIcon className="mt-2" />
+              </SheetTrigger>
+              <SheetContent>
+                <section className="w-full text-black font-bold uppercase">
+                  <ul className=" flex flex-col gap-3 ">
+                    <li>
+                      <Link className={`${router.pathname == "/" && "text-blue-400"}`} href={"/"}>Home</Link>
+                    </li>
+                    <li>
+                      <Link className={`${router.pathname == "/product/custom_pc" && "text-blue-400"}`} href={"/product/custom_pc"}>Desktop</Link>
+                    </li>
+                    <li>
+                      <Link className={`${router.pathname == "/product/laptop" && "text-blue-400"}`} href={"/product/laptop"}>Laptop</Link>
+                    </li>
+                    <li>
+                      <Link className={`${router.pathname == "/product/accessories" && "text-blue-400"}`} href={"/product/accessories"}>Accessories</Link>
+                    </li>
+                    <li>
+                      <Link className={`${router.pathname == "/product/featured" && "text-blue-400"}`} href={"/product/featured"}>Featured</Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={`${router.pathname === '/our_deals' ? 'text-blue-400' : ""}`}
+                        href={"/our_deals"}
+                      >
+                        Our Deals
+                      </Link>
+                    </li>
+                  </ul>
+                </section>
+              </SheetContent>
+            </Sheet>
+          </div>
         </section>
+
       </div >
     </div >
   );
