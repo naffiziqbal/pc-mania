@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from "@/components/ui/input"
 import Button from '../ui/Button/Button';
 import { useForm } from 'react-hook-form';
+import { signUpUser } from '@/utils/APIs';
 
 
 const Signup = () => {
@@ -12,16 +13,24 @@ const Signup = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmitForm = (data) => {
+    const onSubmitForm = async (data) => {
         const { name, email, password, file } = data
         const image = file[0]
         console.log(image)
         const formData = new FormData()
         formData.append("image", image)
         console.log(formData)
+        /* 
+        * Make a API request to upload the image to imgbb 
+        * Get  returnd Link 
+        * Attach it to the UserData 
+        * send data to backend to Register User
+        */
 
-        const userData = { name, email, password, file, role: "user" }
+        const userData = { name, email, password, image: 'https://i.ibb.co/jrBQF5s/ape-7020995-1280.png', role: "user" }
         console.log(userData)
+        const user = await signUpUser(userData)
+        console.log(user)
     }
     return (
         <div className='px-2 pb-4'>
