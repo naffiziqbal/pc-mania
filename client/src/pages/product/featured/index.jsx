@@ -1,17 +1,24 @@
 import NewProductCarousel from '@/components/ProductCarousel/NewProductCarousel';
 import NewProducts from '@/components/products/NewProducts';
 import Products from '@/components/products/Products';
+import Head from 'next/head';
 import React from 'react';
 
 const LaptopPage = ({ products }) => {
     return (
-        <div>
-            <section className="flex justify-between items-center">
-                <h3 className="text-2xl font-semibold my-5">New Arival</h3>
-            </section>
-            <NewProductCarousel products={products} />
+        <>
+            <Head>
+                <title>Featured Product</title>
+                <meta name='description' content='Released This Week' />
+            </Head>
+            <div>
+                <section className="flex justify-between items-center">
+                    <h3 className="text-2xl font-semibold my-5">New Arival</h3>
+                </section>
+                <NewProductCarousel products={products} />
 
-        </div>
+            </div>
+        </>
     );
 };
 
