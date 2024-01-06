@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from "@/components/ui/input"
 import { useForm } from 'react-hook-form';
 import { loginUser } from '@/utils/APIs';
 import Cookies from 'js-cookie';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoading, setUser } from '@/redux/user/UserSlice';
 import { useRouter } from 'next/router';
 
 
 const Signup = () => {
     const dispatch = useDispatch()
+    const { isLoading } = useSelector(state => state.user)
+    console.log(isLoading)
     const router = useRouter()
     const {
         register,
@@ -17,6 +19,7 @@ const Signup = () => {
         watch,
         formState: { errors },
     } = useForm()
+
 
     const onSubmitForm = async (dataField) => {
         // const { name, email } = dataField
@@ -47,7 +50,7 @@ const Signup = () => {
                     <Input type='password' {...register('password', { required: true })} />
                 </div>
 
-                <button className='px-5 py-3 w-full bg-blue-400 rounded-full mt-4 text-white font-bold' type='submit'>Login</button>
+                <button className='px-5 py-3 w-full bg-blue-400 rounded-full mt-4 text-white font-bold' type='submit'>{isLoading ? <span className='text-white bg-red-500'>loading</span> : "Login"}</button>
             </form>
         </div>
     );

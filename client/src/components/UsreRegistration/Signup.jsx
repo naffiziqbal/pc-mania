@@ -3,9 +3,15 @@ import { Input } from "@/components/ui/input"
 import Button from '../ui/Button/Button';
 import { useForm } from 'react-hook-form';
 import { signUpUser } from '@/utils/APIs';
+import { useDispatch } from 'react-redux';
+import { setUser } from '@/redux/user/UserSlice';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 
 const Signup = () => {
+    const dispatch = useDispatch()
+    const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -13,10 +19,10 @@ const Signup = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmitForm = async (data) => {
-        const { name, email, password, file } = data
+    const onSubmitForm = async (udata) => {
+        const { name, email, password, file } = udata
         const image = file[0]
-        console.log(image)
+        // console.log(image)
         const formData = new FormData()
         formData.append("image", image)
         console.log(formData)
@@ -28,10 +34,14 @@ const Signup = () => {
         */
 
         const userData = { name, email, password, image: 'https://i.ibb.co/jrBQF5s/ape-7020995-1280.png', role: "user" }
-        console.log(userData)
+        // console.log(userData)
         try {
-            const user = await signUpUser(userData)
-            console.log(user)
+            const { data } = await signUpUser(userData)
+            // console.log(data.data)
+            dispatch(setUser(data.data))
+            // Cookies.set('uid', data?.data?._id)
+            // console.log(user)
+            router.push('/')
         } catch (error) {
             console.log(err)
         }

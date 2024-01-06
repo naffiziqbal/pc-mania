@@ -15,6 +15,7 @@ export const userSlice = createSlice({
     setIsLoading: (state, action) => {
       console.log(state.isLoading, "initial State");
       state.isLoading = action.payload;
+      console.log(state.isLoading, "post loading");
     },
   },
 });
