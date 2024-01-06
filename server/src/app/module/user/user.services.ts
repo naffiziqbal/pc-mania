@@ -10,7 +10,7 @@ const createUserToDb = async (user: IUser) => {
     const data = await User.create(user);
     return data;
   }
-  return;
+  throw new Error('User Creation Failed');
 };
 
 const getUserFromDb = async () => {
