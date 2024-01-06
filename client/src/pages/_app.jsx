@@ -4,9 +4,10 @@ import Layout from "./layout";
 import { Provider, } from "react-redux";
 import store from "@/redux/store";
 import Head from "next/head";
+import { Toaster } from "@/components/ui/sonner"
 
 function App({ Component, pageProps }) {
- 
+
   return (
     <div>
       <Head>
@@ -20,6 +21,7 @@ function App({ Component, pageProps }) {
       <Provider store={store}>
         <Layout>
           <Component {...pageProps} />
+          <Toaster />
         </Layout>
       </Provider>
     </div>

@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoading, setUser } from '@/redux/user/UserSlice';
 import { useRouter } from 'next/router';
+import { toast } from 'sonner';
 
 
 const Signup = () => {
@@ -35,7 +36,8 @@ const Signup = () => {
             router.push('/')
 
         } catch (error) {
-            console.log(error)
+            // console.log(error)
+            toast(error?.response?.data?.message || "Email or Password Dosen't match")
         }
     }
     return (

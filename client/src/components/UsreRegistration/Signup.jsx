@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '@/redux/user/UserSlice';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
+import { toast } from 'sonner';
 
 
 const Signup = () => {
@@ -16,6 +17,7 @@ const Signup = () => {
         register,
         handleSubmit,
         watch,
+        setError,
         formState: { errors },
     } = useForm()
 
@@ -37,13 +39,13 @@ const Signup = () => {
         // console.log(userData)
         try {
             const { data } = await signUpUser(userData)
-            // console.log(data.data)
             dispatch(setUser(data.data))
-            // Cookies.set('uid', data?.data?._id)
-            // console.log(user)
+            // console.log(data)
+            Cookies.set('uid', data?.data?._id)
             router.push('/')
         } catch (error) {
-            console.log(err)
+            // console.log(error)
+            toast(error?.response?.data?.message || "User Creation Failed")
         }
     }
     return (
@@ -52,10 +54,12 @@ const Signup = () => {
                 <div>
                     <label htmlFor="email">Email</label>
                     <Input type='email' {...register('email', { required: true })} />
+                    {errors.email && <p>{errors.email.message}</p>}
                 </div>
                 <div>
-                    <label htmlFor="email">Password</label>
-                    <Input type='password' {...register('password', { required: true })} />
+                    <label htmlFor="password">Password</label>
+                    <Input type='password' {...register('password', { required: true }, { minLength: 4 })} />
+                    {errors.password && <p>{errors.password.message}</p>}
                 </div>
                 <div>
                     <label htmlFor="text">Name</label>

@@ -31,7 +31,6 @@ import { setUser } from "@/redux/user/UserSlice";
 // * Component
 const Header = ({ cart, user }) => {
   const dispatch = useDispatch()
-  const [isOpenProfile, setIsOpenProfile] = useState(false)
   // console.log(cart)
   const router = useRouter();
   const [cartItems, setCartItems] = useState(null)
@@ -129,7 +128,7 @@ const Header = ({ cart, user }) => {
               <DropdownMenuSeparator />
               <DropdownMenuItem>Profile</DropdownMenuItem>
               {!user?._id ? <DropdownMenuItem>
-                <Link href={'/registration'}>login
+                <Link href={'/registration'}>Login
                 </Link>
               </DropdownMenuItem> :
                 <DropdownMenuItem>
