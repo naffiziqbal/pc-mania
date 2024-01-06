@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { ProductRoutes } from "./module/product/user.routes";
+import { ProductRoutes } from "./module/product/product.routes";
 import { ReviewRoutes } from "./module/review/review.routes";
 import { UserRouter } from "./module/user/user.routes";
 
