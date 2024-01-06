@@ -26,14 +26,16 @@ import {
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/redux/user/UserSlice";
+import Search from "@/components/Search/Serach";
 
 
 // * Component
 const Header = ({ cart, user }) => {
   const dispatch = useDispatch()
-  console.log(cart.cart)
+  // console.log(cart.cart)
   const router = useRouter();
   const [cartItems, setCartItems] = useState(null)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   useEffect(() => {
     const cart = getLocalStorageCart()
@@ -44,6 +46,9 @@ const Header = ({ cart, user }) => {
   const handleLogout = () => {
     Cookies.remove('uid')
     dispatch(setUser(null))
+  }
+  const handleSearch = () => {
+    setIsSearchOpen(!isSearchOpen)
   }
 
   return (
@@ -84,6 +89,7 @@ const Header = ({ cart, user }) => {
       {/* Main Header */}
 
       <div className="max_viewport flex justify-between items-center py-5 font-bold">
+        <Search setIsSearchOpen={setIsSearchOpen} isSearchOpen={isSearchOpen} />
         <div className="w-5/6 flex justify-between items-center">
           <section className="min-w-fit w-1/6 ">
             {/* //?  Logo */}
@@ -139,7 +145,7 @@ const Header = ({ cart, user }) => {
               <DropdownMenuItem>Dashboard</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <CiSearch />
+          <CiSearch onClick={handleSearch} />
           <div className="w-fit relative">
             <Link className={`${router.pathname === "/cart" && "text-blue-600"}`} href={'/cart'}>
               <CiShoppingCart className="  h-9 w-6 cursor-pointer " />
@@ -184,7 +190,6 @@ const Header = ({ cart, user }) => {
             </Sheet>
           </div>
         </section>
-
       </div >
     </div >
   );
