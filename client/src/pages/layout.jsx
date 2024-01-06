@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Layout({ children }) {
   const dispatch = useDispatch()
-  const cart = useSelector(state => state.cart)
+  const { cart } = useSelector(state => state.cart)
   const user = useSelector(state => state.user.user)
 
   useEffect(() => {

@@ -31,7 +31,7 @@ import { setUser } from "@/redux/user/UserSlice";
 // * Component
 const Header = ({ cart, user }) => {
   const dispatch = useDispatch()
-  // console.log(cart)
+  console.log(cart.cart)
   const router = useRouter();
   const [cartItems, setCartItems] = useState(null)
 
@@ -47,7 +47,7 @@ const Header = ({ cart, user }) => {
   }
 
   return (
-    <div className="border-b-2 fixed top-0 w-full z-50 bg-white ">
+    <div className="border-b-2 fixed top-0 w-full z-50 bg-white px-2">
       {/* Top Header */}
       {/* <div className="text-[.9rem] bg-black  min-h-fit p-2 text-white">
         <div className="max_viewport flex flex-col justify-start md:flex-row md:justify-between md:items-center">
