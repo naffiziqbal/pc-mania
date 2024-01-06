@@ -13,16 +13,16 @@ import Button from '../ui/Button/Button';
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
     reviews.push({
-        _id: '6582db616e98be8f016b5d49',
+        _id: '2',
         productId: 'test',
-        reviewerId: 'test',
+        reviewerId: 'test1',
         reviewerMessage: 'test',
         createdAt: '2023-12-20T12:17:37.298Z',
         updatedAt: '2023-12-20T12:17:37.298Z',
         __v: 0
     },
         {
-            _id: '6582db616e98be8f016b5d49',
+            _id: '1',
             productId: 'test',
             reviewerId: 'test',
             reviewerMessage: 'test',
@@ -56,8 +56,8 @@ const Reviews = () => {
             >
 
                 {
-                    reviews?.map((review, idx) =>
-                        <div key={idx} className=''>
+                    reviews?.map((review) =>
+                        <div key={review._id} className=''>
 
                             <SwiperSlide className=' min-h-96'>
                                 <div className='flex min-h-52 *:mx-2 absolute top-1/2 -translate-y-1/2 left-0'>
@@ -72,7 +72,6 @@ const Reviews = () => {
                         </div>
                     )
                 }
-
             </Swiper>
         </div >
     );

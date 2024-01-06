@@ -5,10 +5,12 @@ import { loginUser } from '@/utils/APIs';
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
 import { setIsLoading, setUser } from '@/redux/user/UserSlice';
+import { useRouter } from 'next/router';
 
 
 const Signup = () => {
     const dispatch = useDispatch()
+    const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -27,6 +29,8 @@ const Signup = () => {
             Cookies.set('uid', data?.data._id)
             // console.log(data?.data?._id)
             dispatch(setIsLoading(false))
+            router.push('/')
+
         } catch (error) {
             console.log(error)
         }

@@ -1,16 +1,32 @@
 import Header from "@/components/shared/Header/Header";
 import Footer from "@/components/shared/footer/Footer";
-import { useSelector } from "react-redux";
+import { setUser } from "@/redux/user/UserSlice";
+import { singleUser } from "@/utils/APIs";
+import Cookies from "js-cookie";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Layout({ children }) {
+  const dispatch = useDispatch()
   const cart = useSelector(state => state.cart)
   const user = useSelector(state => state.user.user)
-  console.log(user)
-  // console.log(cart)
 
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const id = Cookies.get('uid')
+        // console.log(id)
+        const { data } = await singleUser(id)
+        dispatch(setUser(data))
+        // console.log(data)
+      } catch (err) {
+      }
+    }
+    getUserData()
+  }, [dispatch])
   return (
     /*
-    Calling Cart data from redux here instead of the actual Header Components because, calling in header causing error. That's why Sending cart as a props
+    Calling Cart and User data from redux here instead of the actual Header Component because, calling in header causing error. That's why Sending cart as a props
     */
     <>
       <Header cart={cart} user={user} />
