@@ -2,9 +2,6 @@ import { getLocalStorageCart } from "@/utils/handleLocalStorage";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
 
@@ -13,16 +10,28 @@ import { useEffect, useState } from "react";
 import {
   CiShoppingCart,
   CiSearch,
-  CiFacebook,
-  CiInstagram,
 } from "react-icons/ci";
 import { IoPersonCircleOutline } from "react-icons/io5";
-
 import { useRouter } from "next/router";
-import { FaHamburger } from "react-icons/fa";
-import { MenuIcon } from "lucide-react";
+import { Cookie, MenuIcon } from "lucide-react";
 import Image from "next/image";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/user/UserSlice";
+
+
+// * Component
 const Header = ({ cart, user }) => {
+  const dispatch = useDispatch()
+  const [isOpenProfile, setIsOpenProfile] = useState(false)
   // console.log(cart)
   const router = useRouter();
   const [cartItems, setCartItems] = useState(null)
@@ -33,8 +42,13 @@ const Header = ({ cart, user }) => {
     setCartItems(arrayOfObject.length)
   }, [cartItems])
 
+  const handleLogout = () => {
+    Cookies.remove('uid')
+    dispatch(setUser(null))
+  }
+
   return (
-    <div className="border-b-2 fixed top-0 w-full z-50 bg-white">
+    <div className="border-b-2 fixed top-0 w-full z-50 bg-white ">
       {/* Top Header */}
       {/* <div className="text-[.9rem] bg-black  min-h-fit p-2 text-white">
         <div className="max_viewport flex flex-col justify-start md:flex-row md:justify-between md:items-center">
@@ -104,8 +118,28 @@ const Header = ({ cart, user }) => {
             </ul>
           </section>
         </div>
-        <section className="flex flex-row w-fit  *:mx-2 *:h-9 *:w-6 *:cursor-pointer ">
+        <section className="flex flex-row w-fit  *:mx-2 [&>*:nth-child(2)]:h-9 [&>*:nth-child(2)]:w-6 *:cursor-pointer ">
           {/* Header End */}
+          <DropdownMenu className='outline-none bg-black'>
+            <DropdownMenuTrigger className="outline-none">
+              {user?._id ? <Image src={user.image} width={40} height={40} alt="user" className="rounded-full" /> : <IoPersonCircleOutline className="w-6 h-6" />}
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Profile</DropdownMenuItem>
+              {!user?._id ? <DropdownMenuItem>
+                <Link href={'/registration'}>login
+                </Link>
+              </DropdownMenuItem> :
+                <DropdownMenuItem>
+                  <div onClick={handleLogout}>
+                    Logout
+                  </div>
+                </DropdownMenuItem>}
+              <DropdownMenuItem>Dashboard</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <CiSearch />
           <div className="w-fit relative">
             <Link className={`${router.pathname === "/cart" && "text-blue-600"}`} href={'/cart'}>
@@ -113,9 +147,7 @@ const Header = ({ cart, user }) => {
             </Link>
             <span className={` ${!cart.length && !cartItems ? "hidden" : "absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center"} `}>{cart.length ? cart.length + cartItems : cartItems}</span>
           </div>
-          <div className="mt-2">
-            {user?._id ? <Image src={user.image} width={30} height={30} alt="user" className="rounded-full" /> : <IoPersonCircleOutline className="w-6 h-6" />}
-          </div>
+
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger>

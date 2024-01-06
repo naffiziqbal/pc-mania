@@ -1,10 +1,9 @@
 import "@/styles/globals.css";
 
 import Layout from "./layout";
-import { Provider, useDispatch } from "react-redux";
+import { Provider, } from "react-redux";
 import store from "@/redux/store";
 import Head from "next/head";
-import Cookies from "js-cookie";
 
 function App({ Component, pageProps }) {
  

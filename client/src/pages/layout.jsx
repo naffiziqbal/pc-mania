@@ -20,6 +20,7 @@ export default function Layout({ children }) {
         dispatch(setUser(data))
         // console.log(data)
       } catch (err) {
+        dispatch(setUser(null))
       }
     }
     getUserData()
