@@ -2,9 +2,13 @@ import React from 'react';
 import { Input } from "@/components/ui/input"
 import { useForm } from 'react-hook-form';
 import { loginUser } from '@/utils/APIs';
+import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { setIsLoading, setUser } from '@/redux/user/UserSlice';
 
 
 const Signup = () => {
+    const dispatch = useDispatch()
     const {
         register,
         handleSubmit,
@@ -12,12 +16,17 @@ const Signup = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmitForm = async (data) => {
-        const { name, email } = data
-        // console.log(data)
+    const onSubmitForm = async (dataField) => {
+        // const { name, email } = dataField
+        // // console.log(data)
         try {
-            const user = await loginUser(data)
-            console.log(user)
+            const { data } = await loginUser(dataField)
+            dispatch(setIsLoading(true))
+            // console.log(data)
+            dispatch(setUser(data?.data))
+            Cookies.set('uid', data?.data._id)
+            // console.log(data?.data?._id)
+            dispatch(setIsLoading(false))
         } catch (error) {
             console.log(error)
         }

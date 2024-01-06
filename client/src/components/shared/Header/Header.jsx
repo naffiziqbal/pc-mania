@@ -21,7 +21,8 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { useRouter } from "next/router";
 import { FaHamburger } from "react-icons/fa";
 import { MenuIcon } from "lucide-react";
-const Header = ({ cart }) => {
+import Image from "next/image";
+const Header = ({ cart, user }) => {
   // console.log(cart)
   const router = useRouter();
   const [cartItems, setCartItems] = useState(null)
@@ -112,7 +113,9 @@ const Header = ({ cart }) => {
             </Link>
             <span className={` ${!cart.length && !cartItems ? "hidden" : "absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center"} `}>{cart.length ? cart.length + cartItems : cartItems}</span>
           </div>
-          <IoPersonCircleOutline />
+          <div className="mt-2">
+            {user?._id ? <Image src={user.image} width={30} height={30} alt="user" className="rounded-full" /> : <IoPersonCircleOutline className="w-6 h-6" />}
+          </div>
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger>
