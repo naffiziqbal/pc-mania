@@ -29,11 +29,15 @@ const Signup = () => {
 
         const userData = { name, email, password, image: 'https://i.ibb.co/jrBQF5s/ape-7020995-1280.png', role: "user" }
         console.log(userData)
-        const user = await signUpUser(userData)
-        console.log(user)
+        try {
+            const user = await signUpUser(userData)
+            console.log(user)
+        } catch (error) {
+            console.log(err)
+        }
     }
     return (
-        <div className='px-2 pb-4'>
+        <div className='px-2 pb-4 h-fit'>
             <form onSubmit={handleSubmit(onSubmitForm)}>
                 <div>
                     <label htmlFor="email">Email</label>

@@ -5,9 +5,9 @@ import { LogIn } from "lucide-react";
 
 const Registration = () => {
     return (
-        <div className="w-fit my-12 h-fit bg-red-50 mx-auto shadow-xl rounded-lg">
-            <Tabs defaultValue="account" className="w-[400px] flex flex-col justify-center">
-                <TabsList className=''>
+        <div className="w-fit my-12 h-fit  mx-auto shadow-xl rounded-lg">
+            <Tabs defaultValue="account" className="w-[400px] flex flex-col justify-center duration-300">
+                <TabsList>
                     <TabsTrigger value="account">Login</TabsTrigger>
                     <TabsTrigger value="password">Sign Up</TabsTrigger>
                 </TabsList>
