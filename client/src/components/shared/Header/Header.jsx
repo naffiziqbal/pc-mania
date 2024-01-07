@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/sheet"
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CiShoppingCart,
   CiSearch,
@@ -27,16 +27,16 @@ import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/redux/user/UserSlice";
 import Search from "@/components/Search/Serach";
+import { setsSearchOpen } from "@/redux/user/search/searchSlice";
 
 
 // * Component
-const Header = ({ cart, user }) => {
+const Header = ({ cart, user, search }) => {
   const dispatch = useDispatch()
-  // console.log(cart.cart)
   const router = useRouter();
   const [cartItems, setCartItems] = useState(null)
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
+  //  Get cart items from localStorage
   useEffect(() => {
     const cart = getLocalStorageCart()
     const arrayOfObject = Object.keys(cart)
@@ -47,49 +47,11 @@ const Header = ({ cart, user }) => {
     Cookies.remove('uid')
     dispatch(setUser(null))
   }
-  const handleSearch = () => {
-    setIsSearchOpen(!isSearchOpen)
-  }
 
   return (
     <div className="border-b-2 fixed top-0 w-full z-50 bg-white px-2">
-      {/* Top Header */}
-      {/* <div className="text-[.9rem] bg-black  min-h-fit p-2 text-white">
-        <div className="max_viewport flex flex-col justify-start md:flex-row md:justify-between md:items-center">
-          <section>Date</section>
-          <section>
-            <p className="text-wrap">
-              Visit our showroom in 1234 Street Adress City Address, 1234
-              Contact Us
-            </p>
-          </section>
-          <section className="flex md:justify-between [&>*:nth-child(n+2)]:mx-2 items-center *:cursor-pointer">
-            <span> <a href='tel:+8801234567898'>(+880) 1234567898</a></span>
-            <span>
-              <a
-                className="*:w-6 *:h-6"
-                target="_blank"
-                href="https://facebook.com"
-              >
-                <CiFacebook />
-              </a>
-            </span>
-            <span>
-              <a
-                className="*:w-6 *:h-6"
-                target="_blank"
-                href="https://instagram.com"
-              >
-                <CiInstagram />
-              </a>
-            </span>
-          </section>
-        </div>
-      </div> */}
-      {/* Main Header */}
-
       <div className="max_viewport flex justify-between items-center py-5 font-bold">
-        <Search setIsSearchOpen={setIsSearchOpen} isSearchOpen={isSearchOpen} />
+        <Search />
         <div className="w-5/6 flex justify-between items-center">
           <section className="min-w-fit w-1/6 ">
             {/* //?  Logo */}
@@ -145,14 +107,13 @@ const Header = ({ cart, user }) => {
               <DropdownMenuItem>Dashboard</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <CiSearch onClick={handleSearch} />
+          <CiSearch onClick={() => dispatch(setsSearchOpen(!search))} />
           <div className="w-fit relative">
             <Link className={`${router.pathname === "/cart" && "text-blue-600"}`} href={'/cart'}>
               <CiShoppingCart className="  h-9 w-6 cursor-pointer " />
             </Link>
             <span className={` ${!cart.length && !cartItems ? "hidden" : "absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center"} `}>{cart.length ? cart.length + cartItems : cartItems}</span>
           </div>
-
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger>
