@@ -7,7 +7,7 @@ import Head from "next/head";
 import { Toaster } from "@/components/ui/sonner"
 
 function App({ Component, pageProps }) {
-
+  const getLayout = Component.getLayout || ((page) => page)
   return (
     <div>
       <Head>
@@ -20,7 +20,7 @@ function App({ Component, pageProps }) {
       </Head>
       <Provider store={store}>
         <Layout>
-          <Component {...pageProps} />
+          {getLayout(<Component {...pageProps} />)}
           <Toaster />
         </Layout>
       </Provider>

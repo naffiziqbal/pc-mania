@@ -85,16 +85,18 @@ const Header = ({ cart, user, search }) => {
             </ul>
           </section>
         </div>
-        <section className="flex flex-row w-fit  *:mx-2 [&>*:nth-child(2)]:h-9 [&>*:nth-child(2)]:w-6 *:cursor-pointer ">
+        <section className="flex flex-row w-fit  *:mx-2  *:cursor-pointer *:h-8 *:w-8 items-center">
           {/* Header End */}
           <DropdownMenu className='outline-none bg-black'>
             <DropdownMenuTrigger className="outline-none">
-              {user?._id ? <Image src={user.image} width={40} height={40} alt="user" className="rounded-full" /> : <IoPersonCircleOutline className="w-6 h-6" />}
+              {user?._id ? <Image src={user.image} width={36} height={36} alt="user" className="rounded-full" /> : <IoPersonCircleOutline className="w-6 h-6" />}
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuItem><Link href={'/profile'}>
+                Profile
+              </Link></DropdownMenuItem>
               {!user?._id ? <DropdownMenuItem>
                 <Link href={'/registration'}>Login
                 </Link>
@@ -104,13 +106,17 @@ const Header = ({ cart, user, search }) => {
                     Logout
                   </div>
                 </DropdownMenuItem>}
-              <DropdownMenuItem>Dashboard</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href={'/dashboard'}>
+                  Dashboard
+                </Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <CiSearch onClick={() => dispatch(setsSearchOpen(!search))} />
           <div className="w-fit relative">
             <Link className={`${router.pathname === "/cart" && "text-blue-600"}`} href={'/cart'}>
-              <CiShoppingCart className="  h-9 w-6 cursor-pointer " />
+              <CiShoppingCart className="w-8 h-8" />
             </Link>
             <span className={` ${!cart.length && !cartItems ? "hidden" : "absolute top-0 left-5 text-white text-xs bg-red-600 rounded-full w-4 h-4 text-center"} `}>{cart.length ? cart.length + cartItems : cartItems}</span>
           </div>

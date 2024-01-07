@@ -18,7 +18,7 @@ const ProductDetail = ({ product }) => {
         ],
         chipset: 'AMD SoC Platform',
         display: [
-            { size: "16" },
+            { size: "16\"" },
             { type: "IPS" },
             { resoulation: "WQXGA (2560x1600)" },
             { touch: false },
@@ -45,12 +45,8 @@ const ProductDetail = ({ product }) => {
             <p className='text-lg'>Product Details of <strong>{name}</strong></p>
             <Image src={image} width={600} height={600} layout='responsive' alt={name} />
             <div>
-                <p className='text-xl font-semibold'>Specifications</p>
+                <p className='text-xl font-semibold'>Specifications `Dummy Content`</p>
                 <section>
-                    {/* <ul className='flex flex-col'>
-                        {Object.keys(specifications).map((data, idx) => <li key={idx}>{data}
-                        </li>)}
-                    </ul> */}
                     <ul>
                         <li className='h-12 bg-[#f5f5f7] text-blue-500 font-semibold'>Procesor</li>
                         <section >
@@ -64,9 +60,30 @@ const ProductDetail = ({ product }) => {
                             <span className='uppercase text-xs max-w-1/2 w-fit'>Chipset</span>
                             <span className='font-semibold w-1/2'>{specifications.chipset}</span>
                         </section>
+                        <li className='h-12 bg-[#f5f5f7] text-blue-500 font-semibold'>Display</li>
+                        <section >
+                            {specifications.display.map((data, id) => <li className='h-12 flex justify-between px-3 my-1 hover:bg-[#f6f6f5] border-x-0 border border-t-0 duration-300' key={id}>
+                                <span className='uppercase text-xs max-w-1/2 w-fit'> {Object.keys(data)}</span><span className='font-semibold w-1/2'>{Object.values(data)}</span>
+                            </li>)}
+                        </section>
+                        <li className='h-12 bg-[#f5f5f7] text-blue-500 font-semibold'>Storage</li>
+                        <section >
+                            {specifications.storage.map((data, id) => <li className='h-12 flex justify-between px-3 my-1 hover:bg-[#f6f6f5] border-x-0 border border-t-0 duration-300' key={id}>
+                                <span className='uppercase text-xs max-w-1/2 w-fit'> {Object.keys(data)}</span><span className='font-semibold w-1/2'>{Object.values(data)}</span>
+                            </li>)}
+                        </section>
+                        <li className='h-12 bg-[#f5f5f7] text-blue-500 font-semibold'>Graphics</li>
+                        <section >
+                            {specifications.graphics.map((data, id) => <li className='h-12 flex justify-between px-3 my-1 hover:bg-[#f6f6f5] border-x-0 border border-t-0 duration-300' key={id}>
+                                <span className='uppercase text-xs max-w-1/2 w-fit'> {Object.keys(data)}</span><span className='font-semibold w-1/2'>{Object.values(data)}</span>
+                            </li>)}
+                        </section>
                     </ul>
                 </section>
             </div>
+            <div >
+                <p className='text-xl font-semibold'> Description</p>
+                {description}</div>
         </div >
     );
 };

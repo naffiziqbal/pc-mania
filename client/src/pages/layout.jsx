@@ -30,11 +30,10 @@ export default function Layout({ children }) {
     /*
     Calling Cart and User data from redux here instead of the actual Header Component because, calling in header causing error. That's why Sending cart as a props
     */
-    <>
+    <div className="">
       <Header cart={cart} user={user} search={search} />
-      <main className="min-h-96 max_viewport overflow-hidden px-3 pt-40">{children}</main>
+      <main className="min-h-screen max_viewport overflow-hidden px-3 pt-24">{children}</main>
       <Footer />
-
-    </>
+    </div>
   );
 }
