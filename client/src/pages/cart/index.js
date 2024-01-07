@@ -1,4 +1,4 @@
-import Cart from "@/components/ui/Cart/Cart";
+import Cart from "@/components/Cart/Cart";
 import React from "react";
 
 const index = () => {
