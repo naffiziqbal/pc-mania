@@ -1,6 +1,6 @@
 import Header from "@/components/shared/Header/Header";
 import Footer from "@/components/shared/footer/Footer";
-import { setUser } from "@/redux/user/UserSlice";
+import { setIsLoading, setUser } from "@/redux/user/UserSlice";
 import { singleUser } from "@/utils/APIs";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
@@ -15,13 +15,16 @@ export default function Layout({ children }) {
   useEffect(() => {
     const getUserData = async () => {
       try {
+        dispatch(setIsLoading(true))
         const id = Cookies.get('uid')
         // console.log(id)
         const { data } = await singleUser(id)
         dispatch(setUser(data))
         // console.log(data)
+        dispatch(setIsLoading(false))
       } catch (err) {
         dispatch(setUser(null))
+        dispatch(setIsLoading(false))
       }
     }
     getUserData()
