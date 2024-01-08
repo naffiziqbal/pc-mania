@@ -94,9 +94,11 @@ const Header = ({ cart, user, search }) => {
             <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem><Link href={'/profile'}>
-                Profile
-              </Link></DropdownMenuItem>
+              <DropdownMenuItem>
+                {user && <Link href={'/profile'}>
+                  Profile
+                </Link>}
+              </DropdownMenuItem>
               {!user?._id ? <DropdownMenuItem>
                 <Link href={'/registration'}>Login
                 </Link>
@@ -107,9 +109,9 @@ const Header = ({ cart, user, search }) => {
                   </div>
                 </DropdownMenuItem>}
               <DropdownMenuItem>
-                <Link href={'/dashboard'}>
+                {user._id && <Link href={'/dashboard'}>
                   Dashboard
-                </Link>
+                </Link>}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

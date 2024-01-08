@@ -1,6 +1,5 @@
 import DashboadLayout from '@/components/Dashboard/DashboadLayout';
-import React from 'react';
-
+import { useSelector } from 'react-redux';
 const Dashboard = () => {
     return (
         <div className='h-fit'>
