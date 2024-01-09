@@ -10,7 +10,7 @@ const DashboadLayout = ({ children }) => {
     return (
         <>
             {user._id ?
-                <div className='flex'>
+                <div className='flex gap-5'>
                     <div className='w-1/3 border-y-0 border h-screen border-l-0'>
                         <Sidebar />
                     </div>
