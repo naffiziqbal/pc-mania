@@ -1,5 +1,6 @@
 import Button from '@/components/ui/Button/Button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Edit, Edit2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -12,7 +13,7 @@ const Checkout = () => {
     const [itemsTotal, setItemsTotal] = useState(0)
     const { orders, user } = useSelector(state => state)
     console.log(user.user)
-    console.log(orders.orders)
+    // console.log(orders.orders)
     useEffect(() => {
         const price = orders?.orders?.map(data => parseInt(data.price * data?.quantity))
         const itemsTotal = price?.reduce((a, b) => a + b, 0)
@@ -48,11 +49,21 @@ const Checkout = () => {
         }
     ]
     return (
-        <>
+        <div className='my-5'>
             {
                 user?.user?._id && orders?.orders?.length ? <div className='flex md:flex-row gap-3 flex-col'>
                     <div className='md:w-2/3 w-full'>
-                        <section className='h-32 drop-shadow-lg shadow-3xl  shadow-slate-400 rounded-lg p-2'>This Will be an adress</section>
+                        <section className=' flex justify-between h-32 drop-shadow-lg shadow-3xl  shadow-slate-400 rounded-lg p-2'>
+                            <section>
+                                {
+                                    user?.user?.address?.map(data => <span className='flex gap-2' key={data.Zip}>
+                                        {Object.keys(data)} {Object.values(data)}
+                                    </span>)
+                                }
+                            </section>
+                            <Edit className='text-blue-600 hover:cursor-pointer' />
+
+                        </section>
                         <section className='shadow-3xl p-2 rounded-md mt-10'>
 
                             <Table key=''>
@@ -86,7 +97,7 @@ const Checkout = () => {
                     <Link href={'/cart'}><IoCartOutline className='w-12 h-12 text-blue-600' /></Link>
                 </div>
             }
-        </>
+        </div>
     );
 };
 
