@@ -18,7 +18,8 @@ const Products = ({ product }) => {
                         <span className="mb-2 flex justify-end items-center *:mx-1 w-full">< IoCheckmarkCircleOutline style={{ color: "green" }} />In stock</span>
                         : <CgUnavailable style={{ color: "red" }} />}
                 </div>
-                <Image className="h-52 w-fit min-w-40 items-center flex justify-center bg-black"
+                <Image
+                    className="h-52 w-40  items-center flex justify-center  aspect-[2/3] object-contain mix-blend-color-burn"
                     src={image}
                     alt="product-image"
                     width={220}

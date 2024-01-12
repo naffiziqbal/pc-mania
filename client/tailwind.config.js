@@ -34,6 +34,9 @@ module.exports = {
       transitionDuration: {
         3000: "3000ms",
       },
+      boxShadow: {
+        "3xl": "0px 3px 20px -5px",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

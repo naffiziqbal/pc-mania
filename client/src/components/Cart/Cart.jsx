@@ -13,12 +13,17 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "../ui/Button/Button";
+import { AddOders } from "@/redux/product/order/orderSlice";
+import { useRouter } from "next/router";
 
 
 const Cart = () => {
+    const router = useRouter()
+    const dispatch = useDispatch()
     const [cartItem, setCartItem] = useState([])
-    // console.log(cartItem)
+    console.log(cartItem)
     useEffect(() => {
         const data = getLocalStorageCart()
         // console.log(data)
@@ -37,6 +42,7 @@ const Cart = () => {
         }
     }
 
+
     const content = cartItem.map(data => <TableBody key={data._id}>
         <TableRow>
             <TableCell className="font-medium">
@@ -52,27 +58,37 @@ const Cart = () => {
         </TableRow>
     </TableBody>)
     // console.log(content)
+
+    const handleCheckout = () => {
+        dispatch(AddOders(cartItem))
+        router.push('/checkout')
+    }
     return (
         <><Head>
             <title>Cart</title>
         </Head>
             <div>
-                {cartItem.length ? <Table>
-                    <TableCaption>A list of your  Cart.</TableCaption>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead className="w-[100px]">Image</TableHead>
-                            <TableHead>Name</TableHead>
-                            <TableHead>Quantity</TableHead>
-                            <TableHead>Price</TableHead>
-                            <TableHead className="text-right">Total Amount</TableHead>
-                            <TableHead>
-                                <Trash2Icon onClick={() => handleDeleteProduct()} />
-                            </TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    {content}
-                </Table> : <div className=" h-96 justify-center items-center flex"><span className="text-3xl">Please Add Some Product First...</span>
+                {cartItem.length ? <>
+                    <Table>
+                        <TableCaption>A list of your  Cart.</TableCaption>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[100px]">Image</TableHead>
+                                <TableHead>Name</TableHead>
+                                <TableHead>Quantity</TableHead>
+                                <TableHead>Price</TableHead>
+                                <TableHead className="text-right">Total Amount</TableHead>
+                                <TableHead>
+                                    <Trash2Icon onClick={() => handleDeleteProduct()} />
+                                </TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        {content}
+                    </Table>
+                    {/* ================================= */}
+                    {/* Button */}
+                    <Button data={'Procced To Checkout'} action={handleCheckout} />
+                </> : <div className=" h-96 justify-center items-center flex"><span className="text-3xl">Please Add Some Product First...</span>
                     <span className="text-blue-400 mt-2 mx-2 underline"><Link href='/'>Back to home</Link></span>
                 </div>}
             </div>
