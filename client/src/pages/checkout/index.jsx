@@ -1,3 +1,4 @@
+import PaymentMethode from '@/components/PaymentMethodes/PaymentMethode';
 import Button from '@/components/ui/Button/Button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Edit, Edit2 } from 'lucide-react';
@@ -12,6 +13,7 @@ const Checkout = () => {
     const router = useRouter()
     const [itemsTotal, setItemsTotal] = useState(0)
     const { orders, user } = useSelector(state => state)
+    const [selectCard, setSelectCard] = useState(null)
     console.log(user.user)
     // console.log(orders.orders)
     useEffect(() => {
@@ -48,6 +50,7 @@ const Checkout = () => {
             "Total Payment": itemsTotal + 50
         }
     ]
+    console.log(selectCard, " But in Checkout Page")
     return (
         <div className='my-5'>
             {
@@ -91,6 +94,7 @@ const Checkout = () => {
                                 }
                             </ul>
                         </section>
+                        <PaymentMethode selectCard={selectCard} setSelectCard={setSelectCard} />
                         <Button data="Place Order" action={handleCheckout} />
                     </div>
                 </div> : <div className='flex flex-row  gap-5 items-center'> <span>Please Select a Product to order</span>
