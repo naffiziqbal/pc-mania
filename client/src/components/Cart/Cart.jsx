@@ -24,6 +24,7 @@ const Cart = () => {
     const dispatch = useDispatch()
     const [cartItem, setCartItem] = useState([])
     console.log(cartItem)
+    const { user } = useSelector(state => state.user)
     useEffect(() => {
         const data = getLocalStorageCart()
         // console.log(data)
@@ -67,31 +68,33 @@ const Cart = () => {
         <><Head>
             <title>Cart</title>
         </Head>
-            <div>
-                {cartItem.length ? <>
-                    <Table>
-                        <TableCaption>A list of your  Cart.</TableCaption>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-[100px]">Image</TableHead>
-                                <TableHead>Name</TableHead>
-                                <TableHead>Quantity</TableHead>
-                                <TableHead>Price</TableHead>
-                                <TableHead className="text-right">Total Amount</TableHead>
-                                <TableHead>
-                                    <Trash2Icon onClick={() => handleDeleteProduct()} />
-                                </TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        {content}
-                    </Table>
-                    {/* ================================= */}
-                    {/* Button */}
-                    <Button data={'Procced To Checkout'} action={handleCheckout} />
-                </> : <div className=" h-96 justify-center items-center flex"><span className="text-3xl">Please Add Some Product First...</span>
-                    <span className="text-blue-400 mt-2 mx-2 underline"><Link href='/'>Back to home</Link></span>
-                </div>}
-            </div>
+            {
+                user?._id ? <div>
+                    {cartItem.length ? <>
+                        <Table>
+                            <TableCaption>A list of your  Cart.</TableCaption>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead className="w-[100px]">Image</TableHead>
+                                    <TableHead>Name</TableHead>
+                                    <TableHead>Quantity</TableHead>
+                                    <TableHead>Price</TableHead>
+                                    <TableHead className="text-right">Total Amount</TableHead>
+                                    <TableHead>
+                                        <Trash2Icon onClick={() => handleDeleteProduct()} />
+                                    </TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            {content}
+                        </Table>
+                        {/* ================================= */}
+                        {/* Button */}
+                        <Button data={'Procced To Checkout'} action={handleCheckout} />
+                    </> : <div className=" h-96 justify-center items-center flex"><span className="text-3xl">Please Add Some Product First...</span>
+                        <span className="text-blue-400 mt-2 mx-2 underline"><Link href='/'>Back to home</Link></span>
+                    </div>}
+                </div> : <div> Please Login To Interact With this page</div>
+            }
         </>
     );
 };

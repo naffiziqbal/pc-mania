@@ -1,3 +1,5 @@
+import Button from '@/components/ui/Button/Button';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,48 +10,77 @@ import { useSelector } from 'react-redux';
 const Checkout = () => {
     const router = useRouter()
     const [itemsTotal, setItemsTotal] = useState(0)
-    const { orders } = useSelector(state => state.orders)
-    console.log(orders)
+    const { orders, user } = useSelector(state => state)
+    console.log(user.user)
+    console.log(orders.orders)
     useEffect(() => {
-        const price = orders.map(data => parseInt(data.price))
+        const price = orders?.orders?.map(data => parseInt(data.price * data?.quantity))
         const itemsTotal = price?.reduce((a, b) => a + b, 0)
         setItemsTotal(itemsTotal)
     }, [orders])
+    const content = orders?.orders?.map(data => <TableBody key={data._id}>
+        <TableRow>
+            <TableCell className="font-medium">
+                <Image src={data.image} alt="image" width={100} height={100} />
+            </TableCell>
+            <TableCell>{data.name}</TableCell>
+            <TableCell>{data.quantity}</TableCell>
+            <TableCell>{data.price}</TableCell>
+            <TableCell className="text-right">{data.price * data.quantity}</TableCell>
+        </TableRow>
+    </TableBody>)
+
+    const handleCheckout = () => {
+        alert('Order Placed')
+    }
+
+    const paymentObj = [
+        {
+            'Items Total': itemsTotal,
+        }, {
+            "Delivery Fee": 50
+        },
+        {
+            "Discount": "N/A"
+        },
+        {
+            "Total Payment": itemsTotal + 50
+        }
+    ]
     return (
         <>
             {
-                orders.length ? <div className='flex md:flex-row gap-3 flex-col'>
+                user?.user?._id && orders?.orders?.length ? <div className='flex md:flex-row gap-3 flex-col'>
                     <div className='md:w-2/3 w-full'>
-                        <p className='my-4 font-bold text-2xl'>This Is Checkout Page</p>
                         <section className='h-32 drop-shadow-lg shadow-3xl  shadow-slate-400 rounded-lg p-2'>This Will be an adress</section>
                         <section className='shadow-3xl p-2 rounded-md mt-10'>
-                            {
-                                orders
-                                    ?.map(data =>
-                                        <div key={data._id}
-                                            className='flex items-center gap-3 shadow-sm'
-                                        >
-                                            <Image src={data?.image} alt='p-i' width={80} height={80} className='object-contain w-24 h-24 aspect-[2/3]' />
-                                            <section className='w-full'>
-                                                <section className='flex justify-between'>
-                                                    <p>{data?.name}</p>
-                                                    <p>Qty : {data?.quantity}</p>
-                                                    <p>$ : {data?.price}</p>
-                                                </section>
-                                                <p className='text-xs'>Band | color |</p>
-                                            </section>
-                                        </div>)
-                            }
+
+                            <Table key=''>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead className="w-[100px]">Image</TableHead>
+                                        <TableHead>Name</TableHead>
+                                        <TableHead>Quantity</TableHead>
+                                        <TableHead>Price</TableHead>
+                                        <TableHead className="text-right">Total Amount</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                {content}
+                            </Table>
+
                         </section >
                     </div >
-                    <div className=' min-h-52 w-full md:w-1/3 shadow-xl '>
+                    <div className=' min-h-52 h-fit w-full md:w-1/3 shadow-3xl p-3 rounded-md'>
                         <h5 className='font-bold'>Order Summary</h5>
                         <section className='w-full text-start'>
-                            <p>Items Total :{itemsTotal} </p>
-                            <p>Delivery Fee  : 50 </p>
-                            <p>Discount : N/A </p>
-                            <p>Total Payment : {itemsTotal + 50}</p>
+                            <ul>
+                                {
+                                    paymentObj.map(data => <li key={''} className='flex justify-between my-2 shadow-sm'><span>
+                                        {Object.keys(data)}</span> <span>{Object.values(data)}</span></li>)
+                                }
+                            </ul>
                         </section>
+                        <Button data="Place Order" action={handleCheckout} />
                     </div>
                 </div> : <div className='flex flex-row  gap-5 items-center'> <span>Please Select a Product to order</span>
                     <Link href={'/cart'}><IoCartOutline className='w-12 h-12 text-blue-600' /></Link>
