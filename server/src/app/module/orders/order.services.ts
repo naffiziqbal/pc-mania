@@ -4,9 +4,9 @@ import { Order } from "./orders.schema"
 const createOrderToDb = async ({ userId, orderItems }: IOrder) => {
 
     try {
-        const data = await Order.create({ userId, orderItems })
-        console.log(data, "create Order DB")
+        const data: any = await Order.create({ userId, orderItems })
         return data
+
     } catch (err) {
         return err
     }
@@ -14,7 +14,7 @@ const createOrderToDb = async ({ userId, orderItems }: IOrder) => {
 
 const getAllOrdersFromDb = async () => {
     try {
-        const data = Order.find({ userId: "659960f97d06dfec6d312edf" })
+        const data = Order.find({})
         return data
     } catch (err) { return err }
 }
