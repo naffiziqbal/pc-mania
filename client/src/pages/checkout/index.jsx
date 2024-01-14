@@ -1,14 +1,13 @@
 import PaymentMethode from '@/components/PaymentMethodes/PaymentMethode';
 import Button from '@/components/ui/Button/Button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Add_TO_CART, CLEAR_CART } from '@/redux/product/cartSlice';
-import { getLocalStorageCart } from '@/utils/handleLocalStorage';
-import { Edit, Edit2 } from 'lucide-react';
+import { CLEAR_CART } from '@/redux/product/cartSlice';
+import { Edit } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { IoCart, IoCartOutline, IoCartSharp } from 'react-icons/io5';
+import { IoCartOutline, } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Checkout = () => {

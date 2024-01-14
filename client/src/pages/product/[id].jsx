@@ -3,7 +3,7 @@ import ProductReviews from '@/components/Reviews/ProductReviews';
 import ProductDetail from '@/components/products/ProductDetail';
 import { useAppDispatch } from '@/redux/hooks/hooks';
 import { Add_TO_CART } from '@/redux/product/cartSlice';
-import { addToLocalStorage, getLocalStorageCart } from '@/utils/handleLocalStorage';
+import { addToLocalStorage } from '@/utils/handleLocalStorage';
 import { HeartIcon } from 'lucide-react';
 import Image from "next/legacy/image";
 import React, { useState } from 'react';
@@ -47,7 +47,6 @@ const ProductDetails = ({ product }) => {
                             <input type="number"
                                 name='itemQuantity'
                                 readOnly
-                                defaultValue={quantity}
                                 value={quantity}
                                 className='p-3 border outline-none w-full hover:cursor-not-allowed' />
                             <button

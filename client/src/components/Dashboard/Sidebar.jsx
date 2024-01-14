@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 const Sidebar = () => {
     const { user } = useSelector(state => state.user)
     return (
-        <div className='bg-[#F5F7FF] leading-9 h-full p-3 '>
+        <div className='bg-[#F5F7FF] leading-9 h-full p-3 w-full '>
 
             {
                 user.role === 'user' && <div className='flex flex-col'>
