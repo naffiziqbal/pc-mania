@@ -7,6 +7,7 @@ export const userSlice = createSlice({
     isLoading: false,
     isError: false,
     error: {},
+    isModalOpen: false,
   },
   reducers: {
     setUser: (state, action) => {
@@ -15,7 +16,10 @@ export const userSlice = createSlice({
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
     },
+    setIsModalOpen: (state, action) => {
+      state.isModalOpen = action.payload;
+    },
   },
 });
 
-export const { setUser, setIsLoading } = userSlice.actions;
+export const { setUser, setIsLoading, setIsModalOpen } = userSlice.actions;

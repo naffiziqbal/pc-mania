@@ -25,7 +25,7 @@ const DashboadLayout = ({ children }) => {
                     <div className='md:w-1/3 max-w-1/3 border-y-0 md:border h-screen border-l-0 *:md:m-0 *:-ml-96'>
                         <Sidebar />
                     </div>
-                    <div className='md:hidden block'>
+                    <div className='md:hidden absolute right-0'>
                         <Sheet className='text-red-400 absolute'>
                             <SheetTrigger>
                                 <MenuIcon />

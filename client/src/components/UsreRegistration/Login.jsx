@@ -4,14 +4,14 @@ import { useForm } from 'react-hook-form';
 import { loginUser } from '@/utils/APIs';
 import Cookies from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsLoading, setUser } from '@/redux/user/UserSlice';
+import { setIsLoading, setIsModalOpen, setUser } from '@/redux/user/UserSlice';
 import { useRouter } from 'next/router';
 import { toast } from 'sonner';
 
 
 const Signup = () => {
     const dispatch = useDispatch()
-    const { isLoading } = useSelector(state => state.user)
+    const { isLoading, isModalOpen } = useSelector(state => state.user)
     console.log(isLoading)
     const router = useRouter()
     const {
@@ -33,7 +33,8 @@ const Signup = () => {
             Cookies.set('uid', data?.data._id)
             // console.log(data?.data?._id)
             dispatch(setIsLoading(false))
-            router.push('/')
+            dispatch(setIsModalOpen(false))
+            router.back()
 
         } catch (error) {
             // console.log(error)
