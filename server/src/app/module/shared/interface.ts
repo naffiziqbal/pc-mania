@@ -20,3 +20,9 @@ export interface IUser {
   image: string;
   role: string;
 }
+
+export interface IOrder {
+  userId: String
+  orderItems: [],
+}
+
