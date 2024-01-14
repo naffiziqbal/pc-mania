@@ -48,6 +48,7 @@ const ProductDetails = ({ product }) => {
                                 name='itemQuantity'
                                 readOnly
                                 defaultValue={quantity}
+                                value={quantity}
                                 className='p-3 border outline-none w-full hover:cursor-not-allowed' />
                             <button
                                 className='w-fit h-fit border text-2xl font-bold py-2 px-5 hover:bg-[#f5f5f7]  duration-300*:

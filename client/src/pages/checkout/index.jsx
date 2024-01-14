@@ -1,20 +1,23 @@
 import PaymentMethode from '@/components/PaymentMethodes/PaymentMethode';
 import Button from '@/components/ui/Button/Button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Add_TO_CART, CLEAR_CART } from '@/redux/product/cartSlice';
+import { getLocalStorageCart } from '@/utils/handleLocalStorage';
 import { Edit, Edit2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { IoCart, IoCartOutline, IoCartSharp } from 'react-icons/io5';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Checkout = () => {
     const router = useRouter()
+    const dispatch = useDispatch()
     const [itemsTotal, setItemsTotal] = useState(0)
     const { orders, user } = useSelector(state => state)
     const [selectCard, setSelectCard] = useState(null)
-    console.log(user.user)
+    // console.log(user.user)
     // console.log(orders.orders)
     useEffect(() => {
         const price = orders?.orders?.map(data => parseInt(data.price * data?.quantity))
@@ -35,6 +38,9 @@ const Checkout = () => {
 
     const handleCheckout = () => {
         alert('Order Placed')
+        localStorage.clear('cart')
+        dispatch(CLEAR_CART([]))
+
     }
 
     const paymentObj = [
@@ -50,7 +56,6 @@ const Checkout = () => {
             "Total Payment": itemsTotal + 50
         }
     ]
-    console.log(selectCard, " But in Checkout Page")
     return (
         <div className='my-5'>
             {

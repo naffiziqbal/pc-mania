@@ -31,6 +31,10 @@ export const cartSlice = createSlice({
         // console.log("else");
       }
     },
+
+    CLEAR_CART: (state, action) => {
+      state.cart = action.payload;
+    },
   },
   // extraReducers: {
   //   [HYDRATE]: (state, action) => {
@@ -43,4 +47,4 @@ export const cartSlice = createSlice({
   // },
 });
 
-export const { Add_TO_CART } = cartSlice.actions;
+export const { Add_TO_CART, CLEAR_CART } = cartSlice.actions;
