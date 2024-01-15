@@ -17,7 +17,7 @@ import { MenuIcon } from 'lucide-react';
 
 const DashboadLayout = ({ children }) => {
     const { user } = useSelector(state => state.user)
-    console.log(user)
+    // console.log(user)
     return (
         <>
             {user._id ?

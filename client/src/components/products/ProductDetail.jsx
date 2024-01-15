@@ -37,7 +37,7 @@ const ProductDetail = ({ product }) => {
         ]
     }
     const { data } = product
-    console.log(product)
+    // console.log(product)
     const { _id, name, image, description, price } = data
 
     return (

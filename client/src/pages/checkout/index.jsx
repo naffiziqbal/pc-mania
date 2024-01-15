@@ -18,9 +18,7 @@ const Checkout = () => {
     const [itemsTotal, setItemsTotal] = useState(0)
     const { orders, user } = useSelector(state => state)
     const [selectCard, setSelectCard] = useState(null)
-    console.log(orders.orders)
-    // console.log(user.user)
-    // console.log(orders.orders)
+
     useEffect(() => {
         const price = orders?.orders?.map(data => parseInt(data.price * data?.quantity))
         const itemsTotal = price?.reduce((a, b) => a + b, 0)
@@ -42,6 +40,7 @@ const Checkout = () => {
         alert('Order Placed')
         try {
             const { data } = await createOrder({ ordersItems: orders?.orders, userId: user?.user?._id })
+            console.log(data, " ORder Create")
             localStorage.clear('cart')
             dispatch(CLEAR_CART([]))
         } catch (err) {

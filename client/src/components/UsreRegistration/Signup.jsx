@@ -27,7 +27,7 @@ const Signup = () => {
         // console.log(image)
         const formData = new FormData()
         formData.append("image", image)
-        console.log(formData)
+        // console.log(formData)
         /* 
         * Make a API request to upload the image to imgbb 
         * Get  returnd Link 

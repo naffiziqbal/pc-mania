@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 const Dashboard = () => {
     const { user } = useSelector(state => state.user)
-    console.log(user)
+    // console.log(user)
     return (
         <>
             {

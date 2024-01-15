@@ -6,7 +6,7 @@ const PaymentMethode = ({ selecCard, setSelectCard }) => {
         setSelectedItem(index === selectedItem ? null : index);
         setSelectCard(index === selectedItem ? null : index)
     }
-    console.log(selectedItem)
+    // console.log(selectedItem)
     const paymentCard = ["Daraz", "Nagad", "Bkash"]
     return (
         <div className={`min-h-24 p-2 *:p-2 grid grid-cols-3 gap-4  *:min-h-16 *:min-w-16 *:rounded-md *:shadow-xl shadow-blue-600  *:duration-300`}>
