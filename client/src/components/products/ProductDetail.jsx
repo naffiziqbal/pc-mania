@@ -43,7 +43,7 @@ const ProductDetail = ({ product }) => {
     return (
         <div className='px-2'>
             <p className='text-lg'>Product Details of <strong>{name}</strong></p>
-            <Image src={image} width={600} height={600} layout='responsive' alt={name} />
+            <Image className='object-contain ' src={image} width={800} height={800} alt={name} />
             <div>
                 <p className='text-xl font-semibold'>Specifications `Dummy Content`</p>
                 <section>

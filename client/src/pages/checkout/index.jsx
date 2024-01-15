@@ -2,6 +2,7 @@ import PaymentMethode from '@/components/PaymentMethodes/PaymentMethode';
 import Button from '@/components/ui/Button/Button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { CLEAR_CART } from '@/redux/product/cartSlice';
+import { createOrder, makeOrder } from '@/utils/APIs';
 import { Edit } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,6 +10,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { IoCartOutline, } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'sonner';
 
 const Checkout = () => {
     const router = useRouter()
@@ -16,6 +18,7 @@ const Checkout = () => {
     const [itemsTotal, setItemsTotal] = useState(0)
     const { orders, user } = useSelector(state => state)
     const [selectCard, setSelectCard] = useState(null)
+    console.log(orders.orders)
     // console.log(user.user)
     // console.log(orders.orders)
     useEffect(() => {
@@ -35,10 +38,16 @@ const Checkout = () => {
         </TableRow>
     </TableBody>)
 
-    const handleCheckout = () => {
+    const handleCheckout = async () => {
         alert('Order Placed')
-        localStorage.clear('cart')
-        dispatch(CLEAR_CART([]))
+        try {
+            const { data } = await createOrder({ ordersItems: orders?.orders, userId: user?.user?._id })
+            localStorage.clear('cart')
+            dispatch(CLEAR_CART([]))
+        } catch (err) {
+            toast(err.message)
+        }
+
 
     }
 

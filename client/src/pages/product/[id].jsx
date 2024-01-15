@@ -33,10 +33,10 @@ const ProductDetails = ({ product }) => {
     return (
         <div>
             {isModalOpen && <SignUpModal />}
-            <div className={` ${isModalOpen ? "blur-sm" : null}`}>
+            <div className={` ${isModalOpen ? "blur-lg backdrop-brightness-50 " : null}`}>
 
                 <div className={`flex md:flex-row flex-col w-full justify-between`}>
-                    <Image className='w-fit max-w-1/2' src={image} width={400} height={200} alt='' />
+                    <Image className='w-fit max-w-1/2 object-contain' src={image} width={600} height={600} alt='' />
                     <div className='md:w-1/2 w-full '>
                         <h3 className='text-3xl'>{name}</h3>
                         <div className='h-24  w-full pt-2 flex justify-between'>

@@ -34,7 +34,9 @@ const Signup = () => {
             // console.log(data?.data?._id)
             dispatch(setIsLoading(false))
             dispatch(setIsModalOpen(false))
-            router.back()
+            if (router.pathname === '/registration') {
+                router.back()
+            }
 
         } catch (error) {
             // console.log(error)
