@@ -15,8 +15,13 @@ const getProductReviewFromDb = async (productId: string) => {
   const data = await Review.find({ productId });
   return data;
 };
+const getReviewByIdFromDb = async (id: string) => {
+  const data = await Review.find({ reviewerId: id })
+  return data
+}
 export const ReviewServices = {
   createReviewToDb,
   getAllReviewFromDb,
   getProductReviewFromDb,
+  getReviewByIdFromDb
 };

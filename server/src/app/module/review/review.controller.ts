@@ -39,8 +39,19 @@ const getProductReview: RequestHandler = async (req, res) => {
   }
 };
 
+const getReviewById: RequestHandler = async (req, res) => {
+  try {
+    const id = req.params.id
+    const data = await ReviewServices.getReviewByIdFromDb(id)
+    res.status(200).json({ data })
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
 export const ReviewController = {
   createReview,
   getAllReview,
   getProductReview,
+  getReviewById
 };

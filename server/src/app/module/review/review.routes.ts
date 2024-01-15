@@ -8,5 +8,6 @@ routes.post("/create-review", ReviewController.createReview);
 routes.get("/all-review", ReviewController.getAllReview);
 //? Specific Product Review
 routes.get("/product-review", ReviewController.getProductReview);
+routes.get("/:id", ReviewController.getReviewById);
 
 export const ReviewRoutes = routes;
