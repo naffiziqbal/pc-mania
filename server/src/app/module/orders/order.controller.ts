@@ -37,4 +37,15 @@ const getAllOrders: RequestHandler = async (req, res) => {
     }
 }
 
-export const OrderController = { createOrder, getAllOrders }
+const getSingleOrder: RequestHandler = async (req, res) => {
+    try {
+        const { id } = req.params
+        const data = await OrderServices.getSignleOrderFromDb(id)
+        res.status(200).json({
+            data,
+        })
+    } catch (error) {
+
+    }
+}
+export const OrderController = { createOrder, getAllOrders, getSingleOrder }

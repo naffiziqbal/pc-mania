@@ -43,4 +43,3 @@ const getSingleUserFromDb = async (id: any) => {
 
 export const UserServices = { createUserToDb, getUserFromDb, userLogin, getSingleUserFromDb };
 
-//  I Will Delete JWT

@@ -18,5 +18,10 @@ const getAllOrdersFromDb = async () => {
         return data
     } catch (err) { return err }
 }
+const getSignleOrderFromDb = async (id: string) => {
+    const data = await Order.find({ userId: id })
+    console.log(data, " Single Order from Service")
+    return data
+}
 
-export const OrderServices = { createOrderToDb, getAllOrdersFromDb }
+export const OrderServices = { createOrderToDb, getAllOrdersFromDb, getSignleOrderFromDb }
