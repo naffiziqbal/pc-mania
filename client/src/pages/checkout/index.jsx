@@ -37,9 +37,10 @@ const Checkout = () => {
     </TableBody>)
 
     const handleCheckout = async () => {
-        alert('Order Placed')
+        // alert('Order Placed')
+        console.log(orders.orders)
         try {
-            const { data } = await createOrder({ ordersItems: orders?.orders, userId: user?.user?._id })
+            const { data } = await createOrder({ userId: user?.user?._id, orderItems: orders?.orders, })
             console.log(data, " ORder Create")
             localStorage.clear('cart')
             dispatch(CLEAR_CART([]))

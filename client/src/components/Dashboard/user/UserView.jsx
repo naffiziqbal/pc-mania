@@ -33,7 +33,7 @@ const UserView = ({ user }) => {
                     <div className='max-w-md'>
 
                         {
-                            orders.slice(0, 2)?.map(data => data?.orderItems?.map((items, idx) => <div key={idx} className='flex gap-3 justify-between'>
+                            orders.slice(0, 200)?.map(data => data?.orderItems?.map((items, idx) => <div key={idx} className='flex gap-3 justify-between'>
                                 <Image src={items.image} alt='' height={80} width={80} />
                                 <h3 className='text-lg font-bold'>{items.name}</h3>
                                 <p>{items?.quantity}</p>
