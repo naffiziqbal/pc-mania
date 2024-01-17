@@ -12,6 +12,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import ButtonCancel from '@/components/ui/Button/ButtonCancel';
+import { toast } from 'sonner';
 
 
 const Orders = () => {
@@ -19,9 +20,13 @@ const Orders = () => {
     const { user } = useSelector(state => state.user)
     useEffect(() => {
         const allOrders = async () => {
-            const { data } = await getOrdersById(user?._id)
-            setOrders(data?.data)
-            console.log(data.data)
+            try {
+                const { data } = await getOrdersById(user?._id)
+                setOrders(data?.data)
+                console.log(data.data)
+            } catch (err) {
+                toast(err.message)
+            }
         }
         allOrders()
     }, [user._id])
@@ -38,7 +43,7 @@ const Orders = () => {
                     <p>{items?.quantity}</p>
                 </TableCell>
                 <TableCell>
-                    <ButtonCancel />
+                    <ButtonCancel id={items?._id} name={items?.name} />
                 </TableCell>
             </TableRow>
         </TableBody>))

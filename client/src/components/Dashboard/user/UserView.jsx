@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import SharedProfileUI from '../ui/SharedProfileUI';
 import { getOrdersById } from '@/utils/APIs';
+import ButtonCancel from '@/components/ui/Button/ButtonCancel';
 
 const UserView = ({ user }) => {
     const [orders, setOrders] = useState([])
@@ -24,24 +25,21 @@ const UserView = ({ user }) => {
             <SharedProfileUI user={user} />
             <hr className='border w-full' />
             <div>
-                <section className='grid grid-cols-2 gap-5'>
-                    <h4 className='text-xl font-semibold'>My Top Orders</h4>
+                <h4 className='text-xl font-semibold'>My Top Orders</h4>
+                <section className=''>
                     <Link href={'/dashboard/orders'}>
                         <span className='underline hover:text-blue-500 duration-300 font-semibold'>See more</span>
                     </Link>
 
-                    <div className='max-w-md'>
+                    <div className=''>
 
                         {
-                            orders.slice(0, 200)?.map(data => data?.orderItems?.map((items, idx) => <div key={idx} className='flex gap-3 justify-between'>
+                            orders.slice(0, 1)?.map(data => data?.orderItems?.map((items, idx) => <div key={idx} className=''>
                                 <Image src={items.image} alt='' height={80} width={80} />
                                 <h3 className='text-lg font-bold'>{items.name}</h3>
                                 <p>{items?.quantity}</p>
-                                <p className='text-blue-600 cursor-pointer'
-                                    onClick={handleCancel}
-                                >Cancel</p>
+                                <ButtonCancel name={items?.name} id={items?._id} />
                             </div>))}
-
 
                     </div>
 
