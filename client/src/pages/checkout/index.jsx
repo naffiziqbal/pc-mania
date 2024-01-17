@@ -33,7 +33,7 @@ const Checkout = () => {
             <TableCell>{data.quantity}</TableCell>
             <TableCell>{data.price}</TableCell>
             <TableCell className="text-right">{data.price * data.quantity}</TableCell>
-        </TableRow>[]
+        </TableRow>
     </TableBody>)
 
     const handleCheckout = async () => {

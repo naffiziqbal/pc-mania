@@ -94,7 +94,7 @@ const Header = ({ cart, user, search }) => {
             <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              
+
               {!user?._id ? <DropdownMenuItem>
                 <Link href={'/registration'}>Login
                 </Link>

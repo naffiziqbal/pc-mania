@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../ui/Button/Button";
 import { AddOders } from "@/redux/product/order/orderSlice";
 import { useRouter } from "next/router";
+import { data } from "autoprefixer";
 
 
 const Cart = () => {
@@ -29,6 +30,9 @@ const Cart = () => {
         const data = getLocalStorageCart()
         // console.log(data)
         setCartItem(data)
+        return () => {
+            setCartItem([])
+        }
     }, [])
     const handleDeleteProduct = (id) => {
         if (id) {

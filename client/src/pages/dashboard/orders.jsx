@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import {
     Table,
     TableBody,
+    TableCaption,
     TableCell,
     TableHead,
     TableHeader,
@@ -43,9 +44,10 @@ const Orders = () => {
         </TableBody>))
 
     return (
-        <div className='overflow-y-scroll scroll-smooth thu max-h-96'>
+        <div className='overflow-y-scroll w-full max-h-96'>
             <p>Pending Delivery {orders.length}</p>
-            <Table className="overflow-hidden max-h-96 h-12">
+            <Table>
+                <TableCaption className='font-semibold'>Your ordered items.</TableCaption>
                 <TableHeader>
                     <TableRow>
                         <TableHead >Image</TableHead>
