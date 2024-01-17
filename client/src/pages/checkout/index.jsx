@@ -33,7 +33,7 @@ const Checkout = () => {
             <TableCell>{data.quantity}</TableCell>
             <TableCell>{data.price}</TableCell>
             <TableCell className="text-right">{data.price * data.quantity}</TableCell>
-        </TableRow>
+        </TableRow>[]
     </TableBody>)
 
     const handleCheckout = async () => {
@@ -42,6 +42,7 @@ const Checkout = () => {
         try {
             const { data } = await createOrder({ userId: user?.user?._id, orderItems: orders?.orders, })
             console.log(data, " ORder Create")
+            toast('Order Has Successfully Been placed')
             localStorage.clear('cart')
             dispatch(CLEAR_CART([]))
         } catch (err) {
