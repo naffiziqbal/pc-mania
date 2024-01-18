@@ -1,7 +1,6 @@
 import Login from "@/components/UsreRegistration/Login";
 import Signup from "@/components/UsreRegistration/Signup";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { LogIn } from "lucide-react";
 
 const Registration = () => {
     return (

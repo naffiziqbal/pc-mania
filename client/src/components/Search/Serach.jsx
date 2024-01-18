@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Input } from '../ui/input';
 import { getAllProducts } from '@/utils/APIs';
 import Link from 'next/link';
@@ -35,8 +35,8 @@ const Search = () => {
     }
     return (
         <div className={` duration-500 w-screen min-h-20 shadow-xl  z-50 bg-white absolute max_viewport ${isSearchOpen ? "bottom-0" : "bottom-[100rem]"}`}>
-            <div className='flex mx-auto flex-col outline-none'>
-                <Input className='w-3/4 h-full focus-visible:ring-0 border-x-0 border-t-0 rounded-none' placeholder="What's on Your Mind ?"
+            <div className='flex mx-auto my-2 flex-col outline-none'>
+                <Input className='w-3/4  h-full focus-visible:ring-0 border-x-0 border-t-0 rounded-none' placeholder="What's on Your Mind ?"
                     value={searchTerm}
                     onChange={handleSearch}
                 />

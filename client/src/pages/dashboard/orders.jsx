@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/table"
 import ButtonCancel from '@/components/ui/Button/ButtonCancel';
 import { toast } from 'sonner';
+import OrdersTable from '@/components/Orders/OrdersTable';
 
 
 const Orders = () => {
@@ -30,39 +31,11 @@ const Orders = () => {
         }
         allOrders()
     }, [user._id])
-    const content =
-        orders.slice(0, 200)?.map(data => data?.orderItems?.map((items, idx) => <TableBody key={idx}>
-            <TableRow>
-                <TableCell>
-                    <Image src={items?.image} alt='image' height={100} width={100} />
-                </TableCell>
-                <TableCell>
-                    <h3 className='text-lg font-bold'>{items.name}</h3>
-                </TableCell>
-                <TableCell>
-                    <p>{items?.quantity}</p>
-                </TableCell>
-                <TableCell>
-                    <ButtonCancel id={items?._id} name={items?.name} />
-                </TableCell>
-            </TableRow>
-        </TableBody>))
 
     return (
-        <div className='overflow-y-scroll w-full max-h-96'>
+        <div className='overflow-y-auto w-full max-h-96'>
             <p>Pending Delivery {orders.length}</p>
-            <Table>
-                <TableCaption className='font-semibold'>Your ordered items.</TableCaption>
-                <TableHeader>
-                    <TableRow>
-                        <TableHead >Image</TableHead>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Quantity</TableHead>
-                        <TableHead >Cancel</TableHead>
-                    </TableRow>
-                </TableHeader>
-                {content}
-            </Table>
+            <OrdersTable orders={orders} />
         </div>
     );
 };
