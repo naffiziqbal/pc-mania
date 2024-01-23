@@ -9,7 +9,7 @@ const Products = ({ product }) => {
 
     return (
         <div
-            className={`m-2 p-2 min-w-fit w-full  flex items-center justify-center  hover:border-blue-400 hover:border duration-300 hover:scale-105 rounded-md 
+            className={`m-2 p-2 min-w-fit w-full  flex items-center justify-center  hover:border-blue-400 hover:shadow-3xl hover:border duration-300 hover:scale-105 rounded-md 
                         
                         `}>
             <Link href={`/product/${_id}`}>

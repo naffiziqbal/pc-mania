@@ -1,19 +1,20 @@
+// spell-checker:disable;
 import PaymentMethode from '@/components/PaymentMethodes/PaymentMethode';
 import Button from '@/components/ui/Button/Button';
+import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { CLEAR_CART } from '@/redux/product/cartSlice';
 import { createOrder, makeOrder } from '@/utils/APIs';
-import { Edit } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { IoCartOutline, } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
 
 const Checkout = () => {
-    const router = useRouter()
+    const { handleSubmit, register } = useForm();
     const dispatch = useDispatch()
     const [itemsTotal, setItemsTotal] = useState(0)
     const { orders, user } = useSelector(state => state)
@@ -24,6 +25,8 @@ const Checkout = () => {
         const itemsTotal = price?.reduce((a, b) => a + b, 0)
         setItemsTotal(itemsTotal)
     }, [orders])
+
+
     const content = orders?.orders?.map(data => <TableBody key={data._id}>
         <TableRow>
             <TableCell className="font-medium">
@@ -36,9 +39,10 @@ const Checkout = () => {
         </TableRow>
     </TableBody>)
 
-    const handleCheckout = async () => {
+    const handleCheckout = async (address) => {
         // alert('Order Placed')
-        console.log(orders.orders)
+        console.log(address)
+
         try {
             const { data } = await createOrder({ userId: user?.user?._id, orderItems: orders?.orders, })
             console.log(data, " ORder Create")
@@ -70,15 +74,61 @@ const Checkout = () => {
             {
                 user?.user?._id && orders?.orders?.length ? <div className='flex md:flex-row gap-3 flex-col'>
                     <div className='md:w-2/3 w-full'>
-                        <section className=' flex justify-between h-32 drop-shadow-lg shadow-3xl  shadow-slate-400 rounded-lg p-2'>
-                            <section>
-                                {
-                                    user?.user?.address?.map(data => <span className='flex gap-2' key={data.Zip}>
-                                        {Object.keys(data)} {Object.values(data)}
-                                    </span>)
-                                }
-                            </section>
-                            <Edit className='text-blue-600 hover:cursor-pointer' />
+                        <section className=' flex justify-between drop-shadow-lg shadow-3xl  shadow-slate-400 rounded-lg p-2 h-fit overflow-hidden'>
+                            <div className={`w-full address`}>
+                                <p className='text-xl mb-2'>Enter Your Address Details</p>
+                                <form className='*:leading-8'>
+                                    <lable for="fname">
+                                        <span> First Name </span>
+                                        <Input className="focus-visible:ring-0" type='text'
+                                            {...register('firstName')}
+                                            defaultValue={user?.user?.name}
+                                            placeholder={"Your First Name "} required />
+                                    </lable>
+                                    <lable for="lname">
+                                        <span>  Last Name</span>
+                                        <Input className="focus-visible:ring-0" type='text'
+                                            {...register('lastName')}
+                                            defaultValue={user.user?.LastName}
+                                            placeholder={"Your Last Name"} required />
+                                    </lable>
+                                    <lable type="number" for="phone">
+                                        <span> Contact  No.</span>
+
+                                        <Input className="focus-visible:ring-0"
+                                            defaultValue={user?.contacat}
+                                            {...register('contact')}
+                                            placeholder={"Your Contact"} required />
+                                    </lable>
+                                    <lable type='text' for="district">
+                                        <span>  District</span>
+
+                                        <Input className="focus-visible:ring-0"
+                                            {...register('district')}
+                                            placeholder={"Your District "} required />
+                                    </lable>
+                                    <lable type='text' for="city">
+                                        <span> City </span>
+
+                                        <Input className="focus-visible:ring-0"
+                                            {...register('city')}
+                                            placeholder={"Your City "} required />
+                                    </lable>
+                                    <lable type="number" for="zip">
+                                        <span>  ZIP or postal code</span>
+
+                                        <Input className="focus-visible:ring-0"
+                                            {...register('zip')}
+                                            placeholder={"Your Zip No."} required />
+                                    </lable>
+                                    <lable type='text' for="full-add">
+                                        <span> Your Full Address </span>
+
+                                        <Input className="focus-visible:ring-0"    {...register('adress')}
+                                            placeholder={"House no, Street name"} required />
+                                    </lable>
+                                </form>
+                            </div>
 
                         </section>
                         <section className='shadow-3xl p-2 rounded-md mt-10'>
@@ -109,7 +159,7 @@ const Checkout = () => {
                             </ul>
                         </section>
                         <PaymentMethode selectCard={selectCard} setSelectCard={setSelectCard} />
-                        <Button data="Place Order" action={handleCheckout} />
+                        <Button data="Place Order" action={handleSubmit(handleCheckout)} />
                     </div>
                 </div> : <div className='flex flex-row  gap-5 items-center'> <span>Please Select a Product to order</span>
                     <Link href={'/cart'}><IoCartOutline className='w-12 h-12 text-blue-600' /></Link>

@@ -66,6 +66,7 @@ const Cart = () => {
 
     const handleCheckout = () => {
         dispatch(AddOders(cartItem))
+        console.log("Cart")
         router.push('/checkout')
     }
     return (

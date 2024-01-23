@@ -19,3 +19,8 @@
 footer * ul > li:hover {
   color: #2563eb;
 }
+
+.address span {
+  font-size: 0.9rem;
+  color: #333;
+}

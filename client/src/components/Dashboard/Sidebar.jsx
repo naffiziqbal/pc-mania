@@ -12,7 +12,6 @@ const Sidebar = () => {
                     <div className='flex flex-col'>
                         <h3 className='text-lg font-bold'>Account Dashboard</h3>
                         <Link href="/dashboard/profile">Account Information</Link>
-                        <Link href="/dashboard/address">Adress Book</Link>
                         <Link href="/dashboard/orders">My Orders</Link>
                         <hr />
                         <Link href="/dashboard/wishlist">My Wishlist</Link>
