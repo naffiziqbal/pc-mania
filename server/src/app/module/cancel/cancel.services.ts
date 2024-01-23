@@ -19,6 +19,15 @@ const getAllCancelOrder = async () => {
         return error.message
     }
 }
+const getSingleCancelOrderFromDb = async (userId: string) => {
+    try {
+        const data = await CancelOrder.find({ userId })
+        return data
+
+    } catch (error: any) {
+        return error.message
+    }
+}
 
 
-const CancelOroderService = { createCancelOrder, getAllCancelOrder }
+export const CancelOrderService = { createCancelOrder, getAllCancelOrder, getSingleCancelOrderFromDb }
