@@ -1,14 +1,15 @@
 import { IOrder } from "../shared/interface"
 import { Order } from "./orders.schema"
 
-const createOrderToDb = async ({ userId, orderItems }: IOrder) => {
+const createOrderToDb = async ({ userId, orderItems, userDetails }: IOrder) => {
 
     try {
-        const data: any = await Order.create({ userId, orderItems })
-        return data
-
-    } catch (err) {
-        return err
+        const data = await Order.create({ userId, orderItems, userDetails })
+        console.log("Order Data", data)
+        if (data) { return data }
+        else { throw new Error("Order Creation Failed") }
+    } catch (err: any) {
+        return err.message
     }
 }
 
@@ -18,10 +19,10 @@ const getAllOrdersFromDb = async () => {
         return data
     } catch (err) { return err }
 }
-const getSignleOrderFromDb = async (id: string) => {
+const getSingleOrderFromDb = async (id: string) => {
     const data = await Order.find({ userId: id })
     console.log(data, " Single Order from Service")
     return data
 }
 
-export const OrderServices = { createOrderToDb, getAllOrdersFromDb, getSignleOrderFromDb }
+export const OrderServices = { createOrderToDb, getAllOrdersFromDb, getSingleOrderFromDb }

@@ -25,8 +25,19 @@ export interface IUser {
   role: string
 }
 
+interface IOrderDetails {
+  address: string
+  city: string
+  contact: number
+  district: string
+  firstName: string
+  lastName: string
+  zip: number
+}
+
 export interface IOrder {
-  userId: String
-  orderItems: [],
+  userId: string
+  orderItems: object[],
+  userDetails: IOrderDetails[]
 }
 

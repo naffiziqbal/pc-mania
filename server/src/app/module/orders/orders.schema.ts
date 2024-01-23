@@ -5,8 +5,18 @@ import { IOrder } from "../shared/interface";
 export const orderSchema = new Schema<IOrder>({
     userId: {
         type: String,
-        required: true
+        required: true,
     },
+    userDetails: [{
+        address: { type: String, required: true },
+        city: { type: String, required: true },
+        contact: { type: Number, required: true },
+        district: { type: String, required: true },
+        firstName: { type: String, required: true },
+        lastName: { type: String, required: true },
+        zip: { type: String, required: true },
+    }
+    ],
     orderItems: [{
         _id: { type: String, required: true },
         name: { type: String, required: true },
