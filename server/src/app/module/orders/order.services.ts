@@ -1,8 +1,8 @@
-import { IOrder } from "../shared/interface"
+import { IOrder, IdeliveredOrder } from "../shared/interface"
+import { DeliveredOrder } from "../delivered/deliveredOrder.schema"
 import { Order } from "./orders.schema"
 
 const createOrderToDb = async ({ userId, orderItems, userDetails }: IOrder) => {
-
     try {
         const data = await Order.create({ userId, orderItems, userDetails })
         console.log("Order Data", data)
@@ -24,5 +24,9 @@ const getSingleOrderFromDb = async (id: string) => {
     console.log(data, " Single Order from Service")
     return data
 }
+
+
+
+
 
 export const OrderServices = { createOrderToDb, getAllOrdersFromDb, getSingleOrderFromDb }

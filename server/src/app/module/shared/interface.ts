@@ -41,3 +41,8 @@ export interface IOrder {
   userDetails: IOrderDetails[]
 }
 
+
+export interface IdeliveredOrder {
+  orderId: string
+  orderDetails: {}
+}
