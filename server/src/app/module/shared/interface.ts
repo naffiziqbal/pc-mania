@@ -46,3 +46,8 @@ export interface IdeliveredOrder {
   orderId: string
   orderDetails: {}
 }
+
+export interface ICancelOrder {
+  userId: string
+  orderDetails: {}
+}
