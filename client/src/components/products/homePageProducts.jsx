@@ -6,10 +6,10 @@ import Products from "./Products";
 import { useSelector } from "react-redux";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 import NewProductCarousel from "../ProductCarousel/NewProductCarousel";
+import { useEffect } from "react";
 
 
 const HomePageProducts = ({ products }) => {
-
     const data = useSelector(state => state.cart)
     // console.log(data)
     return (

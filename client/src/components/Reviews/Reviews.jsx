@@ -9,38 +9,15 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { A11y, Autoplay, Pagination, Scrollbar } from 'swiper/modules';
 import Button from '../ui/Button/Button';
+import { getReviews } from '@/utils/APIs';
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
-    reviews.push({
-        _id: '2',
-        productId: 'test',
-        reviewerId: 'test1',
-        reviewerMessage: 'test',
-        createdAt: '2023-12-20T12:17:37.298Z',
-        updatedAt: '2023-12-20T12:17:37.298Z',
-        __v: 0
-    },
-        {
-            _id: '1',
-            productId: 'test',
-            reviewerId: 'test',
-            reviewerMessage: 'test',
-            createdAt: '2023-12-20T12:17:37.298Z',
-            updatedAt: '2023-12-20T12:17:37.298Z',
-            __v: 0
-
-        })
     useEffect(() => {
-        const getReviews = async () => {
-            const res = await fetch(`https://pc-mania.vercel.app/api/v1/review/all-review`)
-            const { data } = await res.json()
-            setReviews(data)
-            // console.log(data)
-        }
-        getReviews()
+        const reviews = getReviews()
+        reviews.then(data => setReviews(data?.data?.data))
     }, [])
-
+    console.log(reviews)
     return (
         <div className=' mx-auto my-12 w-[70%] min-h-96 bg-[#F5F7FF]  rounded-lg'>
             <Swiper

@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "@/redux/user/UserSlice";
 
 const Home = ({ products }) => {
- 
+
 
   return <>
     <Head>

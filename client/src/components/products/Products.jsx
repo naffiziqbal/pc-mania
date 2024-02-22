@@ -1,3 +1,4 @@
+import { useGetReviewsQuery } from "@/redux/product/review/reviewApi";
 import Image from "next/legacy/image";
 import Link from 'next/link';
 import React from 'react';
@@ -6,7 +7,7 @@ import { IoCheckmarkCircleOutline } from 'react-icons/io5';
 
 const Products = ({ product }) => {
     const { _id, name, image, price, stock, review, createdAt } = product
-
+    console.log(_id)
     return (
         <div
             className={`m-2 p-2 min-w-fit w-full  flex items-center justify-center  hover:border-blue-400 hover:shadow-3xl hover:border duration-300 hover:scale-105 rounded-md 
@@ -28,9 +29,8 @@ const Products = ({ product }) => {
                 <span>{review}</span>
                 <p>{name}</p>
                 <p>{price}</p>
+                <p>{ }</p>
             </Link>
-
-
         </div>
     );
 };

@@ -4,6 +4,7 @@ import SignUpModal from '@/components/modal/SignUpModal';
 import ProductDetail from '@/components/products/ProductDetail';
 import { useAppDispatch } from '@/redux/hooks/hooks';
 import { Add_TO_CART } from '@/redux/product/cartSlice';
+import { useGetReviewsQuery } from '@/redux/product/review/reviewApi';
 import { setIsModalOpen } from '@/redux/user/UserSlice';
 import { addToLocalStorage } from '@/utils/handleLocalStorage';
 import { HeartIcon } from 'lucide-react';
@@ -18,6 +19,9 @@ const ProductDetails = ({ product }) => {
     const { data } = product
     const [quantity, setQuantity] = useState(1)
     const { _id, name, image, description, price } = data
+
+    const { data: review } = useGetReviewsQuery(_id)
+    console.log(review?.data)
 
     const handleCart = (e) => {
         e.preventDefault()
@@ -81,7 +85,7 @@ const ProductDetails = ({ product }) => {
                     </div>
 
                 </div >
-                <ProductReviews />
+                <ProductReviews data={review?.data} />
                 <ProductDetail product={product} />
             </div>
         </div>
