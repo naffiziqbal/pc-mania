@@ -1,14 +1,13 @@
 import { RequestHandler } from "express";
 import { ProductServices } from "./product.services";
-import { UserServices } from "../user/user.services";
 
 const createProduct: RequestHandler = async (req, res) => {
   const product = req.body;
   try {
     const data = await ProductServices.createProductToDb(product);
     res.status(200).json({
-      sucess: true,
-      messsage: "Product Created Successfully",
+      success: true,
+      message: "Product Created Successfully",
       data,
     });
   } catch (err) {
@@ -31,7 +30,7 @@ const getProducts: RequestHandler = async (req, res) => {
   }
 };
 
-const getSigngleProduct: RequestHandler = async (req, res) => {
+const getSingleProduct: RequestHandler = async (req, res) => {
   const id = req.params.id;
   console.log(id, "request");
   try {
@@ -61,6 +60,6 @@ const getProductAsCategories: RequestHandler = async (req, res) => {
 export const ProductController = {
   createProduct,
   getProducts,
-  getSigngleProduct,
+  getSingleProduct,
   getProductAsCategories
 };

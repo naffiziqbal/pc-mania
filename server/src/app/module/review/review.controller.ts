@@ -29,8 +29,8 @@ const getAllReview: RequestHandler = async (req, res) => {
 };
 
 const getProductReview: RequestHandler = async (req, res) => {
-  console.log(req.body);
-  const { productId } = req.body;
+  console.log(req.params.id);
+  const productId = req.params.id;
   try {
     const data = await ReviewServices.getProductReviewFromDb(productId);
     res.status(200).json({ data });
