@@ -25,7 +25,7 @@ const Search = () => {
         const term = event.target.value;
         setSearchTerm(term);
         // Perform search and update results
-        const results = products.filter(item => item?.name.includes(term || term.toLowerCase() || term.toUpperCase()))
+        const results = products.filter(item => item?.name.toLowerCase().includes(term || term.toLowerCase() || term.toUpperCase()))
         setSearchResults(results);
     };
 

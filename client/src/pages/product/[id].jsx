@@ -11,17 +11,19 @@ import { HeartIcon } from 'lucide-react';
 import Image from "next/legacy/image";
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import reviews from '../dashboard/reviews';
 
 
 const ProductDetails = ({ product }) => {
-    const { user, isModalOpen } = useSelector(state => state.user)
-    const dispatch = useAppDispatch()
-    const { data } = product
     const [quantity, setQuantity] = useState(1)
+    const dispatch = useAppDispatch()
+    const { data } = product // Destruction Data
+    const { user, isModalOpen } = useSelector(state => state.user)
     const { _id, name, image, description, price } = data
 
-    const { data: review } = useGetReviewsQuery(_id)
+    const { data: review } = useGetReviewsQuery(_id, { refetchOnMountOrArgChange: true, pollingInterval: 30000 })
 
+    // Add To Cart
     const handleCart = (e) => {
         e.preventDefault()
         dispatch(Add_TO_CART({ ...data, quantity: quantity }))
@@ -38,14 +40,14 @@ const ProductDetails = ({ product }) => {
             {isModalOpen && <SignUpModal />}
             <div className={` ${isModalOpen ? "blur-lg backdrop-brightness-50 " : null}`}>
 
-                <div className={`flex md:flex-row flex-col w-full justify-between`}>
+                <div className={`flex md:flex-row flex-col w-full justify-between gap-5`}>
                     <Image className='w-fit max-w-1/2 object-contain' src={image} width={600} height={600} alt='' />
                     <div className='md:w-1/2 w-full '>
                         <h3 className='text-3xl'>{name}</h3>
                         <div className='h-24  w-full pt-2 flex justify-between'>
                             <div className='w-3/4 flex *:mr-2 text-xs'>
-                                <p id='reviews'>Total Reviews</p> |
-                                <p id='questions'>Answred Questions</p>
+                                <p id='reviews'>Total Reviews: {review?.data?.length} |</p>
+                                <p id='questions'> Answred Questions</p>
                             </div>
                             <div className='w-fit'>
                                 <HeartIcon />

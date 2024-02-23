@@ -28,7 +28,7 @@ const HomePageProducts = ({ products }) => {
             </section>
             <div className="grid md:grid-cols-4 grid-cols-2 gap-2 px-4">
                 {
-                    products.filter(data => data.category === 'accessories')
+                    products?.filter(data => data.category.toLowerCase() === 'accessories')
                         ?.map(product => <Products key={product?._id} product={product} />)
                 }
             </div>
@@ -38,7 +38,7 @@ const HomePageProducts = ({ products }) => {
             </section>
             <div className="grid md:grid-cols-4 grid-cols-2 gap-2 px-4">
                 {
-                    products.filter(data => data.category === 'Laptop')
+                    products.filter(data => data.category.toLowerCase() === 'laptop')
                         ?.map(product => <Products key={product?._id} product={product} />)
                 }
             </div>
@@ -49,7 +49,7 @@ const HomePageProducts = ({ products }) => {
 
             <div className="flex flex-row gap-3 overflow-x-auto">
                 {
-                    products.filter(data => data.category === 'Custom Pc')
+                    products.filter(data => data.category.toLowerCase() === 'pc')
                         ?.map(product => <Products key={product?._id} product={product} />)
                 }
             </div>

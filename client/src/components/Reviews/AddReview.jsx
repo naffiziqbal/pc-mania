@@ -4,10 +4,9 @@ import { createReview } from '@/utils/APIs';
 import React, { useState } from 'react';
 
 const AddReview = ({ product }) => {
-    const dispatch = useAppDispatch()
-    console.log(product)
-    const { user, isReviewModalOpen } = useAppSelector(state => state.user)
     const [ratings, setRating] = useState(5);
+    const dispatch = useAppDispatch()
+    const { user, isReviewModalOpen } = useAppSelector(state => state.user)
     const handleRatingChange = (e) => {
         setRating(e.target.value);
     }

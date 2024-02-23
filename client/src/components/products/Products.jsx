@@ -6,12 +6,12 @@ import { CgUnavailable } from 'react-icons/cg';
 import { IoCheckmarkCircleOutline } from 'react-icons/io5';
 
 const Products = ({ product }) => {
-    const { _id, name, image, price, stock, review, createdAt } = product
+    const { _id, name, image, price, stock, createdAt } = product
     return (
         <div
             className={`m-2 p-2 min-w-fit w-full  flex items-center justify-center  hover:border-blue-400 hover:shadow-3xl hover:border duration-300 hover:scale-105 rounded-md 
-                        
-                        `}>
+                    
+                        `} >
             <Link href={`/product/${_id}`}>
                 <div className="flex justify-center items-center">
                     {stock ?
@@ -25,12 +25,12 @@ const Products = ({ product }) => {
                     width={220}
                     height={200}
                 />
-                <span>{review}</span>
-                <p>{name}</p>
-                <p>{price}</p>
-                <p>{ }</p>
+                <section className="font-semibold flex flex-col gap-3">
+                    <p className="">{name}</p>
+                    <p>{price}</p>
+                </section>
             </Link>
-        </div>
+        </div >
     );
 };
 
