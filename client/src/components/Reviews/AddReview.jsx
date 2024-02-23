@@ -2,15 +2,16 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
 import { setIsReviewModalOpen } from '@/redux/user/UserSlice';
 import { createReview } from '@/utils/APIs';
 import React, { useState } from 'react';
+import { toast } from 'sonner';
 
 const AddReview = ({ product }) => {
     const [ratings, setRating] = useState(5);
     const dispatch = useAppDispatch()
     const { user, isReviewModalOpen } = useAppSelector(state => state.user)
+    // handle Rating Change
     const handleRatingChange = (e) => {
         setRating(e.target.value);
     }
-
 
     const handleFormSubmit = async (e) => {
         e.preventDefault()
@@ -27,11 +28,10 @@ const AddReview = ({ product }) => {
                 productId: product?.data?._id,
             })
         if (data.success) {
-            alert('Review Added Successfully')
+            toast('Review Added Successfully')
             dispatch(setIsReviewModalOpen(false))
         }
     }
-    console.log(isReviewModalOpen)
     return (
         <div className={`absolute min-w-96 bg-slate-100 shadow-2xl p-3 rounded-md   left-1/2 -translate-x-1/2 duration-300 ${isReviewModalOpen ? "top-1/2 w-fit z-50" : "-top-[100rem]"} `}>
             <form className='' onSubmit={handleFormSubmit}>
@@ -45,12 +45,11 @@ const AddReview = ({ product }) => {
                     </label>
                 </div>
                 <div>
-                    <label htmlFor="">
+                    <label>
                         <textarea name='text-area' className='w-full border-blue-500 rounded-md border p-3 outline-none' rows={5} />
                     </label>
                 </div>
                 <div className='flex justify-center gap-3'>
-
                     <input type="submit" className='text-center bg-blue-500 text-white py-2 px-4 rounded-md cursor-pointer' />
                 </div>
             </form>

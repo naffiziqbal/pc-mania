@@ -40,7 +40,6 @@ const Checkout = () => {
     </TableBody>)
 
     const handleCheckout = async (address) => {
-        // alert('Order Placed')
 
         try {
             const { data } = await createOrder({ userId: user?.user?._id, orderItems: orders?.orders, })

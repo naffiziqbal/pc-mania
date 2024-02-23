@@ -6,13 +6,11 @@ import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 
 const NewProducts = ({ product }) => {
-    const { _id, name, image, price, stock, review, createdAt } = product
-    // Get 1 hour form Current Time
+    const { _id, name, image, price, stock, createdAt } = product
+
     const timeAgoFromNow = Date.now() - 7 * 24 * 60 * 60 * 1000
     // Formatting time into Human Readable
     const productCreationTimeStamp = new Date(createdAt).getTime()
-
-
 
     return (
         <>
@@ -34,15 +32,11 @@ const NewProducts = ({ product }) => {
                                 width={500}
                                 height={500}
                             />
-                            <span>{review}</span>
                             <p>{name}</p>
                             <p>{price}</p>
                         </Link>
                     </div>
-
                 }
-
-
             </CarouselItem >
 
         </>

@@ -12,7 +12,11 @@ export const reviewApi = createApi({
       query: (id) => `review/product/${id}`,
       providesTags: ["review"],
     }),
+    getAllReviews: builder.query({
+      query: () => `review/all-review`,
+      providesTags: ["review"],
+    }),
   }),
 });
 
-export const { useGetReviewsQuery } = reviewApi;
+export const { useGetReviewsQuery, useGetAllReviewsQuery } = reviewApi;

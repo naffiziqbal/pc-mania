@@ -3,7 +3,6 @@ import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from '../ui
 import NewProducts from '../products/NewProducts';
 
 const NewProductCarousel = ({ products }) => {
-    console.log(products)
     return (
         <div >
             <Carousel>

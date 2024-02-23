@@ -1,8 +1,8 @@
 # PC-Mania
 
-This is The server side documentation of Pc Mania. Pc mania is a modern e-commerce type web application with a single seller. The main concept is Only Admin can sell the product. And User can Buy and Give review to the products. 
+This is The server side documentation of Pc Mania. Pc mania is a modern e-commerce type web application with a single seller. The main concept is Only Admin can sell the product. And User can Buy and Give review to the products.
 
-This backend is hosted on Vercel.  Live link: `https://pc-mania.vercel.app/api/v1/`
+This backend is hosted on Vercel. Live link: `https://pc-mania.vercel.app/api/v1/`
 
 ## Endpoints and Schema
 
@@ -10,17 +10,17 @@ This backend is hosted on Vercel.  Live link: `https://pc-mania.vercel.app/api/v
 
 1. Create user: `/user/create-user`(POST)
 2. Login user: `/user/login` (POST)
-3. Get single user: `/user/:id` (POST) 
+3. Get single user: `/user/:id` (POST)
 4. Get all users: `/user/all-users` (GET)
 
-### User  Schema
+### User Schema
 
 ```tsx
-  name: string
-  email: string
-  password: string
-  image: string
-  role: string
+name: string;
+email: string;
+password: string;
+image: string;
+role: string;
 ```
 
 ## Product APIs and Schemas
@@ -35,19 +35,19 @@ This backend is hosted on Vercel.  Live link: `https://pc-mania.vercel.app/api/v
 ### Product Schema
 
 ```tsx
-  name: string
-  description: string
-  category: string
-  image: string
-  price: number
-  stock: boolean
+name: string;
+description: string;
+category: string;
+image: string;
+price: number;
+stock: boolean;
 ```
 
 ### Order API and Schema
 
 1. Create order: `/order/create-order` (POST)\
 2. Get all orders: `/order/all-orders` (GET)
-3. Get Single Orders: `/order/:id`  (GET)
+3. Get Single Orders: `/order/:id` (GET)
 
 ### Schema
 
@@ -66,8 +66,9 @@ This backend is hosted on Vercel.  Live link: `https://pc-mania.vercel.app/api/v
 ### Schema
 
 ```tsx
- userId: string
-  orderDetails: {}
+userId: string;
+orderDetails: {
+}
 ```
 
 ### Delivered Order
@@ -92,13 +93,13 @@ This backend is hosted on Vercel.  Live link: `https://pc-mania.vercel.app/api/v
 ### Schema
 
 ```tsx
-productId: string
-  reviewerId: string
-  reviewerName: string
-  reviewerImage: string
-  reviewerEmail: string
-  ratingPoint: number
-  reviewerMessage: string
+productId: string;
+reviewerId: string;
+reviewerName: string;
+reviewerImage: string;
+reviewerEmail: string;
+ratingPoint: number;
+reviewerMessage: string;
 ```
 
 This Is It ============

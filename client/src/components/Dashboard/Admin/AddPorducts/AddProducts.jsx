@@ -2,6 +2,7 @@ import { addProduct } from '@/utils/APIs';
 import handleUploadImage from '@/utils/handleUploadImage';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
 const AddProducts = () => {
 
@@ -27,12 +28,12 @@ const AddProducts = () => {
             if (uploadImage.status) {
                 const { data } = await addProduct({ name, description, price, category, image: uploadImage.data.url, stock: true })
                 if (data.success) {
-                    alert("Product Added Successfully")
+                    toast('Product Added Successfully')
                     reset()
                 }
             }
         } catch (error) {
-            alert(error?.response?.data?.message || "Product Creation Failed")
+            toast(error?.response?.data?.message || 'Product Creation Failed')
         }
     }
     return (

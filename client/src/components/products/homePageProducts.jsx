@@ -1,19 +1,11 @@
 import Link from "next/link";
 import Ad from "../ui/ad/Ad";
-import NewProducts from "./NewProducts";
 import style from "@/styles/Product.module.css"
 import Products from "./Products";
-import { useSelector } from "react-redux";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 import NewProductCarousel from "../ProductCarousel/NewProductCarousel";
-import { useEffect } from "react";
-
 
 const HomePageProducts = ({ products }) => {
-    const data = useSelector(state => state.cart)
-    // console.log(data)
     return (
-
         <div className={style.global_product}>
             <section className="flex justify-between items-center">
                 <h3 className="text-2xl font-semibold my-5">New Products</h3>
@@ -53,7 +45,6 @@ const HomePageProducts = ({ products }) => {
                         ?.map(product => <Products key={product?._id} product={product} />)
                 }
             </div>
-
         </div>
     );
 };
