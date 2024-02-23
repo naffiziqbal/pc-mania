@@ -3,6 +3,7 @@ import { ProductServices } from "./product.services";
 
 const createProduct: RequestHandler = async (req, res) => {
   const product = req.body;
+  console.log(product, "request");
   try {
     const data = await ProductServices.createProductToDb(product);
     res.status(200).json({
@@ -10,8 +11,8 @@ const createProduct: RequestHandler = async (req, res) => {
       message: "Product Created Successfully",
       data,
     });
-  } catch (err) {
-    res.send({ error: { message: "Product Creation Failed" } });
+  } catch (err: any) {
+    res.send(err.message);
   }
 };
 
