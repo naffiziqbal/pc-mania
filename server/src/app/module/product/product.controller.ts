@@ -6,6 +6,7 @@ const createProduct: RequestHandler = async (req, res) => {
   console.log(product, "request");
   try {
     const data = await ProductServices.createProductToDb(product);
+    if (!data._id) return;
     res.status(200).json({
       success: true,
       message: "Product Created Successfully",
