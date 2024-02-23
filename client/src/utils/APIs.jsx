@@ -1,7 +1,7 @@
 const { default: axios } = require("axios")
 
-// const url = `https://pc-mania.vercel.app/api/v1`
-const url = `http://localhost:5000/api/v1`
+const url = `https://pc-mania.vercel.app/api/v1`
+// const url = `http://localhost:5000/api/v1`
 const API = axios.create({ baseURL: url })
 
 

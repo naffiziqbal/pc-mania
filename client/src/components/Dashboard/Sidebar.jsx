@@ -22,11 +22,8 @@ const Sidebar = () => {
             }
 
             {
-                user?.role === 'admin' && <div className='flex flex-col'>
-                    <Link href="/dashboard/profile">My Profile</Link>
-                    <Link href="/dashboard/orders">My Orders</Link>
-                    <Link href="/dashboard/returns">My Returns</Link>
-                    <Link href="/dashboard/wishlist">My Wishlist</Link>
+                user?.role === 'admin' && <div className='flex flex-col font-bold'>
+                    <Link href="/dashboard/add-products">Add Products</Link>
                 </div>
             }
         </div>

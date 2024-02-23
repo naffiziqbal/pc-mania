@@ -12,7 +12,6 @@ import { toast } from 'sonner';
 const Signup = () => {
     const dispatch = useDispatch()
     const { isLoading, isModalOpen } = useSelector(state => state.user)
-    console.log(isLoading)
     const router = useRouter()
     const {
         register,

@@ -41,11 +41,9 @@ const Checkout = () => {
 
     const handleCheckout = async (address) => {
         // alert('Order Placed')
-        console.log(address)
 
         try {
             const { data } = await createOrder({ userId: user?.user?._id, orderItems: orders?.orders, })
-            console.log(data, " ORder Create")
             toast('Order Has Successfully Been placed')
             localStorage.clear('cart')
             dispatch(CLEAR_CART([]))

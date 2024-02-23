@@ -24,7 +24,6 @@ const Cart = () => {
     const router = useRouter()
     const dispatch = useDispatch()
     const [cartItem, setCartItem] = useState([])
-    console.log(cartItem)
     const { user } = useSelector(state => state.user)
     useEffect(() => {
         const data = getLocalStorageCart()
@@ -66,7 +65,6 @@ const Cart = () => {
 
     const handleCheckout = () => {
         dispatch(AddOders(cartItem))
-        console.log("Cart")
         router.push('/checkout')
     }
     return (

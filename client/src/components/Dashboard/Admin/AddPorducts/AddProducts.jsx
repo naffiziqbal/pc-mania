@@ -22,10 +22,8 @@ const AddProducts = () => {
         const description = productData.productDescription;
         const price = productData.productPrice
         const category = productData.productCategory
-        console.log(productData)
         try {
             const uploadImage = await handleUploadImage(formData)
-            console.log(uploadImage)
             if (uploadImage.status) {
                 const { data } = await addProduct({ name, description, price, category, image: uploadImage.data.url, stock: true })
                 if (data.success) {
@@ -34,7 +32,7 @@ const AddProducts = () => {
                 }
             }
         } catch (error) {
-            console.log(error)
+            alert(error?.response?.data?.message || "Product Creation Failed")
         }
     }
     return (

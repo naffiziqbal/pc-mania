@@ -8,7 +8,7 @@ const AdminView = ({ user }) => {
             <hr />
             <section className='mt-5'>
                 <h3 className='text-xl font-bold '>Orders</h3>
-                
+
             </section>
         </div>
     );
