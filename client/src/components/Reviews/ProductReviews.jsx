@@ -3,7 +3,6 @@ import Reviews from './Reviews';
 import { Star } from 'lucide-react';
 
 const ProductReviews = ({ data }) => {
-    console.log(data)
     return (
         <div className='bg-[#f5f5f7] min-h-0 p-4 w-full'>
             {

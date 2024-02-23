@@ -21,7 +21,6 @@ const ProductDetails = ({ product }) => {
     const { _id, name, image, description, price } = data
 
     const { data: review } = useGetReviewsQuery(_id)
-    console.log(review?.data)
 
     const handleCart = (e) => {
         e.preventDefault()

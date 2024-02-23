@@ -1,6 +1,7 @@
 const { default: axios } = require("axios")
 
-const url = `https://pc-mania.vercel.app/api/v1`
+// const url = `https://pc-mania.vercel.app/api/v1`
+const url = `http://localhost:5000/api/v1`
 const API = axios.create({ baseURL: url })
 
 
@@ -12,3 +13,4 @@ export const createOrder = async ({ userId, orderItems }) => API.post('/order/cr
 export const getOrdersById = async (id) => API.get(`/order/${id}`)
 export const cancelOrder = async (id) => API.post(`/order/cancel/${id}`)
 export const getReviews = async () => API.get(`review/all-review`)
+export const addProduct = async (data) => API.post('/product/create-product', data)
