@@ -3,12 +3,13 @@ import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from '../ui
 import NewProducts from '../products/NewProducts';
 
 const NewProductCarousel = ({ products }) => {
+    console.log(products)
     return (
-        <div>
+        <div >
             <Carousel>
                 <CarouselContent>
                     {
-                        products?.slice(0, 6)?.map(product => <NewProducts key={product?._id} product={product} />)
+                        products?.map(product => <NewProducts key={product?._id} product={product} />)
                     }
                 </CarouselContent>
                 <CarouselPrevious />

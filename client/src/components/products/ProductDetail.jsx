@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 
 const ProductDetail = ({ product }) => {
-    const specifications = {
+    /* const specifications = {
         processor: [
             { model: "Normal Processor Can Pc Hold" },
             { brand: "Brand" },
@@ -35,16 +35,15 @@ const ProductDetail = ({ product }) => {
             { memory: "8GB" },
             { type: "DDR4" }
         ]
-    }
+    } */
     const { data } = product
-    // console.log(product)
     const { _id, name, image, description, price } = data
 
     return (
         <div className='px-2'>
             <p className='text-lg'>Product Details of <strong>{name}</strong></p>
             <Image className='object-contain ' src={image} width={800} height={800} alt={name} />
-            <div>
+            {/*         <div>
                 <p className='text-xl font-semibold'>Specifications `Dummy Content`</p>
                 <section>
                     <ul>
@@ -80,7 +79,7 @@ const ProductDetail = ({ product }) => {
                         </section>
                     </ul>
                 </section>
-            </div>
+            </div> */}
             <div >
                 <p className='text-xl font-semibold'> Description</p>
                 {description}</div>

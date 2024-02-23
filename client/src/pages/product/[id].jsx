@@ -84,7 +84,7 @@ const ProductDetails = ({ product }) => {
                     </div>
 
                 </div >
-                <ProductReviews data={review?.data} />
+                <ProductReviews review={review?.data} product={product} />
                 <ProductDetail product={product} />
             </div>
         </div>

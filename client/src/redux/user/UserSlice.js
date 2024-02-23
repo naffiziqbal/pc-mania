@@ -8,6 +8,7 @@ export const userSlice = createSlice({
     isError: false,
     error: {},
     isModalOpen: false,
+    isReviewModalOpen: false,
   },
   reducers: {
     setUser: (state, action) => {
@@ -19,7 +20,11 @@ export const userSlice = createSlice({
     setIsModalOpen: (state, action) => {
       state.isModalOpen = action.payload;
     },
+    setIsReviewModalOpen: (state, action) => {
+      state.isReviewModalOpen = action.payload;
+    },
   },
 });
 
-export const { setUser, setIsLoading, setIsModalOpen } = userSlice.actions;
+export const { setUser, setIsLoading, setIsModalOpen, setIsReviewModalOpen } =
+  userSlice.actions;

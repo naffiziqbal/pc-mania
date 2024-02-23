@@ -7,19 +7,17 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 const NewProducts = ({ product }) => {
     const { _id, name, image, price, stock, review, createdAt } = product
-
-
     // Get 1 hour form Current Time
-    const timeAgoFromNow = Date.now() - 30 * 24 * 60 * 60 * 1000
-    // Formating time into Human Readable
-    const productCriationTimeStamp = new Date(createdAt).getTime()
+    const timeAgoFromNow = Date.now() - 7 * 24 * 60 * 60 * 1000
+    // Formatting time into Human Readable
+    const productCreationTimeStamp = new Date(createdAt).getTime()
 
 
 
     return (
         <>
             <CarouselItem className="md:basis-1/4 basis-1/2">
-                {productCriationTimeStamp > timeAgoFromNow ?
+                {productCreationTimeStamp > timeAgoFromNow &&
                     <div
                         className={`m-6 p-2 max-h-fit min-w-fit w-full flex items-center justify-center  hover:border-blue-400 hover:shadow-3xl hover:border duration-300 hover:scale-105 rounded-md 
                         
@@ -40,10 +38,8 @@ const NewProducts = ({ product }) => {
                             <p>{name}</p>
                             <p>{price}</p>
                         </Link>
-
-
                     </div>
-                    : <div className="bg-[#F5F7FF] mb-2 w-fit p-4">No New Arivals This Week</div>
+
                 }
 
 
