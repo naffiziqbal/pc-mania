@@ -35,7 +35,9 @@ const DashboadLayout = ({ children }) => {
                             </SheetContent>
                         </Sheet>
                     </div>
-                    {children}
+                    <div className='max-w-screen-xl overflow-auto'>
+                        {children}
+                    </div>
                 </div> : <div> Please <span className='underline hover:text-blue-600 text-xl duration-300'><Link href={'/registration'}>Login</Link></span> To View</div>
             }
         </>
