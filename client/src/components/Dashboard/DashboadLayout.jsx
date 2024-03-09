@@ -22,10 +22,10 @@ const DashboadLayout = ({ children }) => {
         <>
             {user._id ?
                 <div className='flex gap-x-3'>
-                    <div className='md:w-1/3 max-w-1/3 border-y-0 md:border h-screen border-l-0 *:md:m-0 *:-ml-96'>
+                    <div className='lg:min-w-[20rem] border-y-0 md:border h-screen border-l-0 *:lg:m-0 *:-ml-96'>
                         <Sidebar />
                     </div>
-                    <div className='md:hidden absolute right-0'>
+                    <div className='lg:hidden absolute right-0'>
                         <Sheet className='text-red-400 absolute'>
                             <SheetTrigger>
                                 <MenuIcon />

@@ -1,4 +1,5 @@
 import { useGetReviewsQuery } from "@/redux/product/review/reviewApi";
+import { Heart, LucideMove3D } from "lucide-react";
 import Image from "next/legacy/image";
 import Link from 'next/link';
 import React from 'react';
@@ -26,8 +27,8 @@ const Products = ({ product }) => {
                     height={200}
                 />
                 <section className="font-semibold flex flex-col gap-3">
-                    <p className="">{name}</p>
-                    <p>{price}</p>
+                    <p className="line-clamp-2">{name}</p>
+                    <p>${price}</p>
                 </section>
             </Link>
         </div >

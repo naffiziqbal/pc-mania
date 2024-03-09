@@ -9,14 +9,9 @@ import { A11y, Autoplay, Pagination, Scrollbar } from 'swiper/modules';
 import Button from '../ui/Button/Button';
 import { getReviews } from '@/utils/APIs';
 import { useGetAllReviewsQuery } from '@/redux/product/review/reviewApi';
+import Image from 'next/image';
 
 const Reviews = () => {
-    /*     const [reviews, setReviews] = useState([])
-        useEffect(() => {
-            const reviews = getReviews()
-            reviews.then(data => setReviews(data?.data?.data))
-        }, []) */
-
 
     const { data } = useGetAllReviewsQuery(undefined, { refetchOnMountOrArgChange: true, pollingInterval: 600000 })
     let reviews = data?.data
@@ -43,7 +38,10 @@ const Reviews = () => {
                                     <FaQuoteLeft className='h-fit w-12 relative' />
                                     <div className='flex flex-col justify-between'>
                                         <p>{review?.reviewerMessage}</p>
-                                        <p className='text-center'> - {review?.reviewerId}</p>
+                                        <section className='flex items-center gap-5'>
+                                            <Image src={review?.reviewerImage} alt="image" width={50} height={50} className='rounded-full' />
+                                            <p className='text-center'> - {review?.reviewerName}</p>
+                                        </section>
                                         <Button data={"Leave us a review"} />
                                     </div>
                                 </div>

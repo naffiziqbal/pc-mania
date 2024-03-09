@@ -1,5 +1,4 @@
 import NewProductCarousel from '@/components/ProductCarousel/NewProductCarousel';
-import NewProducts from '@/components/products/NewProducts';
 import Products from '@/components/products/Products';
 import Head from 'next/head';
 import React from 'react';

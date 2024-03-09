@@ -22,7 +22,7 @@ const Sidebar = () => {
             }
 
             {
-                user?.role === 'admin' && <div className='flex flex-col font-bold'>
+                user?.role === 'admin' && <div className='flex flex-col font-bold *:text-nowrap'>
                     <Link href="/dashboard/add-products">Add Products</Link>
                 </div>
             }
