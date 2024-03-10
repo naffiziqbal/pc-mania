@@ -1,10 +1,9 @@
-import DashboadLayout from '@/components/Dashboard/DashboadLayout';
 import Image from 'next/image';
-import { CgDollar } from 'react-icons/cg';
 import { useSelector } from 'react-redux';
 import saleImage from '../../../public/balance-c2e80db3.webp';
-import Combining from '@/components/Chart/Chart';
 import BarsDataset from '@/components/Chart/Chart';
+import DashTable from '@/components/Dashboard/Table/Table';
+import DashboardLayout from '@/components/Dashboard/DashboadLayout';
 
 /*  <>
             {
@@ -17,13 +16,13 @@ const Dashboard = () => {
     const { user } = useSelector(state => state.user)
     // console.log(user)
     return (
-        <div className='mt-12 lg:mt-0 text-white'>
+        <div className='mt-12 lg:mt-0 '>
             {/* Analytics =============================================*/}
-            <div className='bg-blue-500 min-h-16 rounded px-4 flex justify-between w-full items-center'>
+            <div className='text-white bg-blue-500 min-h-16 rounded px-4 flex justify-between w-full items-center'>
                 <h3 className='text-4xl font-bold'>Pc Mania Analytics</h3>
                 <p className='font-bold'> {date}</p>
             </div>
-            <section className=''>
+            <section className='text-white'>
                 <div className='flex flex-col lg:flex-row  *:bg-blue-500 *:rounded min-h-40 mt-6 *:p-5 gap-3'>
 
                     {/* SaleOverView ====================================*/}
@@ -75,7 +74,12 @@ const Dashboard = () => {
                         <BarsDataset />
                     </div>
                 </div>
+            </section>
 
+            {/*  Data Table */}
+            <section className='my-4'>
+                <h2 className='text-3xl'>Products List</h2>
+                <DashTable />
             </section>
         </div>
     );
@@ -84,7 +88,7 @@ const Dashboard = () => {
 export default Dashboard;
 
 Dashboard.getLayout = function getLayout(page) {
-    return <DashboadLayout>
+    return <DashboardLayout>
         {page}
-    </DashboadLayout>
+    </DashboardLayout>
 }

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 const Sidebar = () => {
     const { user } = useSelector(state => state.user)
     return (
-        <div className='bg-[#F5F7FF] leading-9 h-full p-3 w-full '>
+        <div className='bg-[#F5F7FF] leading-9 h-full p-3 w-full'>
 
             {
                 user.role === 'user' && <div className='flex flex-col'>
@@ -23,7 +23,9 @@ const Sidebar = () => {
 
             {
                 user?.role === 'admin' && <div className='flex flex-col font-bold *:text-nowrap'>
+                    <Link href="/dashboard">Dashboard</Link>
                     <Link href="/dashboard/add-products">Add Products</Link>
+                    <Link href="/dashboard/all-products">All Products</Link>
                 </div>
             }
         </div>

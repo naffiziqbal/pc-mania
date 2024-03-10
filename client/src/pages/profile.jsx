@@ -1,4 +1,4 @@
-import DashboadLayout from '@/components/Dashboard/DashboadLayout';
+import DashboardLayout from '@/components/Dashboard/DashboardLayout';
 import React from 'react';
 
 const Profile = () => {
@@ -11,8 +11,8 @@ const Profile = () => {
 export default Profile;
 
 Profile.getLayout = function getLayout(page) {
-    return <DashboadLayout>
+    return <DashboardLayout>
         {page}
-    </DashboadLayout>
+    </DashboardLayout>
 }
 

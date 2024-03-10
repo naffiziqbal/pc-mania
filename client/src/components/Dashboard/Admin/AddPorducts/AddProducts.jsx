@@ -3,6 +3,8 @@ import handleUploadImage from '@/utils/handleUploadImage';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
+import DashboardLayout from '@/components/Dashboard/DashboadLayout';
+
 
 const AddProducts = () => {
 
@@ -37,10 +39,10 @@ const AddProducts = () => {
         }
     }
     return (
-        <div className='text-center'>
+        <div className='w-full'>
             <h3 className='text-2xl font-semibold'>Add Product</h3>
-            <form className=' *:my-4' onSubmit={handleSubmit(handleFormSubmit)}>
-                <div>
+            <form className=' *:my-4 w-full' onSubmit={handleSubmit(handleFormSubmit)}>
+                <div className='w-full'>
                     <label htmlFor="product-name">
                         <input type="text"
                             name='productName'
@@ -48,7 +50,7 @@ const AddProducts = () => {
                             required={true}
                             placeholder='name of the product'
                             aria-label='product name'
-                            className='lg:w-1/2  w-full rounded-md  p-3 border-blue-500 border outline-none' />
+                            className='w-full rounded-md  p-3 border-blue-500 border outline-none' />
                     </label>
                 </div>
                 <div>
@@ -60,7 +62,7 @@ const AddProducts = () => {
                             aria-label='product category'
                             name='productCategory'
 
-                            placeholder='product category' className='lg:w-1/2  w-full rounded-md  p-3 border-blue-500 border outline-none' />
+                            placeholder='product category' className='w-full rounded-md  p-3 border-blue-500 border outline-none' />
                     </label>
                 </div>
                 <div>
@@ -71,7 +73,7 @@ const AddProducts = () => {
                             {...register('productDescription')}
                             rows={10}
                             aria-label='product description'
-                            placeholder='product description' className='lg:w-1/2  w-full rounded-md  p-3 border-blue-500 border outline-none' />
+                            placeholder='product description' className=' w-full rounded-md  p-3 border-blue-500 border outline-none' />
                     </label>
                 </div>
                 <div>
@@ -81,7 +83,7 @@ const AddProducts = () => {
                             aria-label='product price'
                             {...register('productPrice', { valueAsNumber: true })}
                             required={true}
-                            placeholder='price' className='lg:w-1/2  w-full rounded-md  p-3 border-blue-500 border outline-none' />
+                            placeholder='price' className=' w-full rounded-md  p-3 border-blue-500 border outline-none' />
                     </label>
                 </div>
                 <div>
@@ -91,7 +93,7 @@ const AddProducts = () => {
                             name='productImage'
                             aria-label='product image'
                             required={true}
-                            placeholder='image' className='lg:w-1/2  w-full rounded-md  p-3 border-blue-500 border outline-none' />
+                            placeholder='image' className=' w-full rounded-md  p-3 border-blue-500 border outline-none' />
                     </label>
                 </div>
                 <input type="submit" className='p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer' value='Add Product' />
@@ -101,3 +103,4 @@ const AddProducts = () => {
 };
 
 export default AddProducts;
+

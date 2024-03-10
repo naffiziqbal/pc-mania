@@ -15,14 +15,14 @@ import {
 import { MenuIcon } from 'lucide-react';
 
 
-const DashboadLayout = ({ children }) => {
+const DashboardLayout = ({ children }) => {
     const { user } = useSelector(state => state.user)
     // console.log(user)
     return (
         <>
             {user._id ?
                 <div className='flex gap-x-3'>
-                    <div className='lg:min-w-[20rem] border-y-0 md:border h-screen border-l-0 *:lg:m-0 *:-ml-96'>
+                    <div className='lg:min-w-[20rem] border-y-0 md:border min-h-screen border-l-0 *:lg:m-0 *:-ml-96'>
                         <Sidebar />
                     </div>
                     <div className='lg:hidden absolute right-0'>
@@ -35,7 +35,7 @@ const DashboadLayout = ({ children }) => {
                             </SheetContent>
                         </Sheet>
                     </div>
-                    <div className='max-w-screen-xl overflow-auto'>
+                    <div className='w-full max-w-screen-xl  overflow-auto'>
                         {children}
                     </div>
                 </div> : <div> Please <span className='underline hover:text-blue-600 text-xl duration-300'><Link href={'/registration'}>Login</Link></span> To View</div>
@@ -44,4 +44,4 @@ const DashboadLayout = ({ children }) => {
     );
 };
 
-export default DashboadLayout;
+export default DashboardLayout;
