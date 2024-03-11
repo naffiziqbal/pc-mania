@@ -5,15 +5,8 @@ import SocialFeed from "@/components/socialFeed/SocialFeed";
 import Reviews from "@/components/Reviews/Reviews";
 import HomePageProducts from "@/components/products/homePageProducts";
 import Head from "next/head";
-import { useEffect } from "react";
-import { singleUser } from "@/utils/APIs";
-import Cookies from "js-cookie";
-import { useDispatch } from "react-redux";
-import { setUser } from "@/redux/user/UserSlice";
 
 const Home = ({ products }) => {
-
-
   return <>
     <Head>
       <title>Pc Mania || A Shop Where You can Buy Your Dream Build</title>

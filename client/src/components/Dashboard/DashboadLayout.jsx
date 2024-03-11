@@ -35,7 +35,7 @@ const DashboardLayout = ({ children }) => {
                             </SheetContent>
                         </Sheet>
                     </div>
-                    <div className='w-full max-w-screen-xl  overflow-auto'>
+                    <div className='w-full max-w-screen-xl mb-4  overflow-auto'>
                         {children}
                     </div>
                 </div> : <div> Please <span className='underline hover:text-blue-600 text-xl duration-300'><Link href={'/registration'}>Login</Link></span> To View</div>
