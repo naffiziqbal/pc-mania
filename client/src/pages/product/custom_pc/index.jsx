@@ -35,7 +35,7 @@ const Desktop = ({ products }) => {
 export default Desktop;
 
 export const getStaticProps = async () => {
-    const res = await fetch(`https://pc-mania.vercel.app/api/v1/product?category=Custom Pc`)
+    const res = await fetch(`https://pc-mania.vercel.app/api/v1/product?category=pc`)
     const data = await res.json()
     return {
         props: {

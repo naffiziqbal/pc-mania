@@ -33,7 +33,7 @@ const LaptopPage = ({ products }) => {
 export default LaptopPage;
 
 export const getStaticProps = async () => {
-    const res = await fetch(`https://pc-mania.vercel.app/api/v1/product?category=Laptop`)
+    const res = await fetch(`https://pc-mania.vercel.app/api/v1/product?category=laptop`)
     const data = await res.json()
     return {
         props: {

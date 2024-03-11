@@ -1,6 +1,3 @@
-import NewProductCarousel from '@/components/ProductCarousel/NewProductCarousel';
-import NewProducts from '@/components/products/NewProducts';
-import Products from '@/components/products/Products';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';

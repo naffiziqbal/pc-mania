@@ -139,7 +139,7 @@ const Header = ({ cart, user, search }) => {
                       <Link className={`${router.pathname == "/product/accessories" && "text-blue-400"}`} href={"/product/accessories"}>Accessories</Link>
                     </li>
                     <li>
-                      <Link className={`${router.pathname == "/product/featured" && "text-blue-400"}`} href={"/product/featured"}>Featured</Link>
+                      <Link className={`${router.pathname == "/product/featured" && "text-blue-400"}`} href={"/product/new_products"}>Featured</Link>
                     </li>
                     <li>
                       <Link

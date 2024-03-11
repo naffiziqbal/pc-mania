@@ -1,17 +1,6 @@
 import { getOrdersById } from '@/utils/APIs';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-import ButtonCancel from '@/components/ui/Button/ButtonCancel';
 import { toast } from 'sonner';
 import OrdersTable from '@/components/Orders/OrdersTable';
 
