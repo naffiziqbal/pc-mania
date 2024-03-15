@@ -17,7 +17,6 @@ const Home = ({ products }) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </Head>
     <div className="max_viewport">
-
       <Slider />
       <HomePageProducts products={products} />
       <Brands />
@@ -28,6 +27,7 @@ const Home = ({ products }) => {
 };
 
 export default Home;
+
 
 
 

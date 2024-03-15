@@ -1,4 +1,4 @@
-import DashboardLayout from '@/components/Dashboard/DashboardLayout';
+import DashboardLayout from '@/components/Dashboard/DashboadLayout';
 import React from 'react';
 
 const Profile = () => {

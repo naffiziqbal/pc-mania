@@ -18,8 +18,8 @@ const TopProducts = ({ products }) => {
 
 
             {/* Products Analytics */}
-            <div className='flex *:bg-blue-500 text-white *:shadow-sm hover:*:shadow *:shadow-blue-500 hover:*:scale-95 *:duration-300 gap-5 *:p-3 my-4 *:rounded-md md:flex-row flex-col  flex-wrap'>
-                <div className='flex flex-1  flex-col min-w-96'>
+            <div className='flex [&:nth-child(1)]:*:bg-blue-500 *:bg-slate-200 *:shadow-lg  hover:*:scale-95 *:duration-300 gap-5 *:p-3 my-4 *:rounded-md md:flex-row flex-col  flex-wrap'>
+                <div className='flex flex-1  flex-col min-w-96 bg-blue-500 text-white '>
                     <h3 className='md:text-3xl text-xl my-4 font-semibold'>Top Sales by Categories</h3>
                     <div className='flex flex-col  gap-4'>
                         <div className='w-full'>
@@ -33,6 +33,8 @@ const TopProducts = ({ products }) => {
                                         <p>${Math.floor(Math.random() * 1000)}K</p>
                                     </div>
                                 })}
+                            <hr />
+                            <p className='text-end font-semibold my-3'>Grand Total: <strong>{Math.floor(Math.random() * 1000)}K</strong></p>
                         </div>
                     </div>
                 </div>

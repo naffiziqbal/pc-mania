@@ -13,7 +13,7 @@ const Desktop = ({ products }) => {
                 <title>Desktop</title>
                 <meta name='description' content='Get Your Own Pc' />
             </Head>
-            <div>
+            <div className='container mx-auto'>
                 <section className="flex justify-between items-center">
                     <h3 className="text-2xl font-semibold my-5">New Arival</h3>
                 </section>

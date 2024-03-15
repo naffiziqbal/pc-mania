@@ -6,12 +6,12 @@ import React from 'react';
 
 const LaptopPage = ({ products }) => {
     return (
-        <>
+        <div className="container  mx-auto">
             <Head>
                 <title>Laptop</title>
                 <meta name='description' content='Get Your Own Laptop' />
             </Head>
-            <div>
+            <div >
                 <section className="flex justify-between items-center">
                     <h3 className="text-2xl font-semibold my-5">New Arivals</h3>
                 </section>
@@ -26,7 +26,7 @@ const LaptopPage = ({ products }) => {
                     }
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

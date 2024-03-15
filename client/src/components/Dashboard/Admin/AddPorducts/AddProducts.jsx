@@ -39,7 +39,7 @@ const AddProducts = () => {
         }
     }
     return (
-        <div className='w-full'>
+        <div className='w-full md:max-w-7xl'>
             <h3 className='text-2xl font-semibold'>Add Product</h3>
             <form className=' *:my-4 w-full' onSubmit={handleSubmit(handleFormSubmit)}>
                 <div className='w-full'>

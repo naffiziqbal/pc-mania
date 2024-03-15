@@ -36,7 +36,7 @@ const ProductDetails = ({ product }) => {
     }
 
     return (
-        <div>
+        <div className='container mx-auto'>
             {isModalOpen && <SignUpModal />}
             <div className={` ${isModalOpen ? "blur-lg backdrop-brightness-50 " : null}`}>
 

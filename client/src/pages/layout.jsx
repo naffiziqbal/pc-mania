@@ -35,7 +35,7 @@ export default function Layout({ children }) {
     */
     <div>
       <Header cart={cart} user={user} search={search} />
-      <main className="min-h-screen max_viewport overflow-hidden px-3 pt-24">{children}</main>
+      <main className="min-h-screen overflow-hidden px-3 pt-24">{children}</main>
       <Footer />
     </div>
   );
